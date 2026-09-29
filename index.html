@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYPE CREATIVE — Good vibe + Hype</title>
+<meta name="description" content="VYPE Creative is a culture-driven PR agency born from streetwear media, combining media sensibility with street hype.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://vypecreative.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VYPE CREATIVE">
+<meta property="og:title" content="VYPE CREATIVE — Good vibe + Hype">
+<meta property="og:description" content="Culture-driven PR agency born from streetwear media. Brand events, production and influencer campaigns in Taipei since 2020.">
+<meta property="og:url" content="https://vypecreative.com/">
+<meta property="og:image" content="https://vypecreative.com/assets/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --fg:#f4f4f0; --fg-dim:#8a8a85; --rule:rgba(244,244,240,.18);
+  --accent:#b6f23a; --page-pad:clamp(16px,4vw,56px);
+  /* good vibe 分類色：活動＝陽光、製作＝海洋、網紅＝粉紅泡泡 */
+  --c-event:#ffc247; --c-production:#8fd6ff; --c-influencer:#ffa6cf;
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--bg);color:var(--fg);font-family:'Noto Sans TC','Helvetica Neue',sans-serif;font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{font-size:15px;line-height:1.55;letter-spacing:.01em}
+body.lock{overflow:hidden}
+::selection{background:var(--accent);color:#0a0a0a}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+img{display:block;max-width:100%}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.55'/></svg>")}
+.display{font-family:'Anton','Noto Sans TC',sans-serif;font-weight:400;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.ital{font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;letter-spacing:-.02em}
+.mono{font-family:'JetBrains Mono',monospace;font-weight:400;text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+.accent{color:var(--accent)}
+.dim{color:var(--fg-dim)}
+.page-pad{padding-left:var(--page-pad);padding-right:var(--page-pad)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border:1px solid var(--fg);font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.1em;transition:background .4s,color .4s,border-color .4s;white-space:nowrap}
+.btn:hover{background:var(--fg);color:var(--bg)}
+.btn--accent{border-color:var(--accent);color:var(--accent)}
+.btn--accent:hover{background:var(--accent);color:#0a0a0a}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px var(--page-pad);
+  background:color-mix(in oklab,var(--bg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav__logo img{height:26px;width:auto}
+.nav__links{display:flex;gap:28px;align-items:center}
+.nav__link{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-dim);transition:color .3s}
+.nav__link:hover{color:var(--fg)}
+@media (max-width:720px){.nav__links .nav__link:not(.keep){display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:96px var(--page-pad) 40px;overflow:hidden}
+.hero__fx{position:absolute;inset:0;z-index:0}
+.hero__fx canvas{width:100%;height:100%;display:block;pointer-events:none}
+.hero__fx::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(10,10,10,.55) 80%),linear-gradient(to bottom,transparent 60%,var(--bg))}
+.hero>*:not(.hero__fx){position:relative;z-index:1}
+.hero__meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--rule);padding-top:14px}
+.hero__meta div{display:flex;flex-direction:column;gap:4px}
+.hero__meta .val{font-size:13px}
+.hero__title{font-size:clamp(64px,14.5vw,236px);margin:6vh 0 4vh}
+.hero__title{line-height:.9}
+.outline{color:transparent;-webkit-text-stroke:2px var(--accent);paint-order:stroke}
+@media (max-width:720px){.outline{-webkit-text-stroke-width:1.5px}}
+.hero__bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.hero__sub{max-width:520px;font-size:clamp(15px,1.3vw,18px);color:var(--fg)}
+.hero__ctas{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:720px){.hero__meta{grid-template-columns:repeat(2,1fr)}}
+
+/* marquee */
+.marquee{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);overflow:hidden;padding:22px 0;white-space:nowrap}
+.marquee__track{display:inline-flex;animation:marq 40s linear infinite}
+.marquee__item{display:inline-flex;align-items:center;justify-content:center;padding:0 clamp(24px,3.5vw,48px);height:clamp(56px,7vw,84px)}
+.marquee__logo{display:block;max-width:none;flex:none;filter:grayscale(1) brightness(1.7);opacity:.9}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* sections */
+.section{padding:clamp(80px,12vw,160px) var(--page-pad)}
+.section__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(40px,6vw,80px);border-top:1px solid var(--rule);padding-top:18px}
+.section__head .label-num{font-family:'Anton',sans-serif;font-size:clamp(56px,9vw,140px);line-height:.98;display:block;margin-top:10px;text-transform:uppercase}
+.section__head .lede{font-size:clamp(16px,1.5vw,20px);max-width:520px;justify-self:end}
+@media (max-width:720px){.section__head{grid-template-columns:1fr}.section__head .lede{justify-self:start}}
+
+/* who */
+.who{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px)}
+.who__copy p{font-size:clamp(20px,2.4vw,34px);line-height:1.3;letter-spacing:-.01em}
+.who__copy .formula{margin-top:32px;font-family:'Anton',sans-serif;font-size:clamp(28px,3.4vw,52px);text-transform:uppercase;line-height:1}
+.who__visual{position:relative;overflow:hidden}
+.who__copy{max-width:1100px}
+.who__visual img{width:100%;height:auto;display:block}
+.who__visual .frame-no{position:absolute;left:14px;bottom:12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;background:rgba(10,10,10,.6);padding:4px 8px;backdrop-filter:blur(6px)}
+
+/* services with CSS glass icons */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service{position:relative;border-top:1px solid var(--rule);padding-top:22px;cursor:pointer}
+.service__img{aspect-ratio:4/5;overflow:hidden;margin-top:24px;position:relative}
+.service__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s}
+.service:hover .service__img img{transform:scale(1.05)}
+.service__top{display:flex;align-items:center;gap:18px;margin-top:18px}
+.service__title{font-family:'Anton',sans-serif;font-size:clamp(28px,2.8vw,44px);text-transform:uppercase;line-height:1}
+.service__sub{color:var(--fg-dim);margin-top:10px;font-size:14px}
+@media (max-width:820px){.services{grid-template-columns:1fr}}
+
+
+/* crayon icons (hand-drawn illustration style) */
+.crayon{width:72px;height:72px;flex:none;transition:transform .5s var(--ease)}
+.crayon svg{width:100%;height:100%;overflow:visible}
+.service:hover .crayon{transform:rotate(-6deg) scale(1.06)}
+
+/* round carousel */
+.rc-wrap{position:relative;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.rc{height:clamp(460px,62vw,640px);perspective:3000px;overflow:hidden;display:flex;align-items:center;justify-content:center;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.rc.dragging{cursor:grabbing}
+@media (max-width:720px){.rc{height:380px}}
+.rc__tilt{transform-style:preserve-3d;transform:rotateX(-7deg)}
+.rc__ring{position:relative;width:0;height:var(--ch);transform-style:preserve-3d}
+.rc__card{position:absolute;top:0;left:0;height:100%;transform-style:preserve-3d}
+.rc__face{position:absolute;inset:0;border-radius:14px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#151515 center/100% 100% no-repeat}
+.rc__face--front{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.rc__face--front::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),transparent 55%)}
+.rc__face--back{transform:rotateY(180deg);filter:brightness(.35)}
+.rc__label{position:absolute;left:14px;right:14px;bottom:12px;z-index:1;pointer-events:none}
+.rc__label .mono{font-size:10px;color:var(--accent)}
+.rc__label .t{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(16px,1.6vw,20px);line-height:1.05;margin-top:4px}
+.rc-hint{position:absolute;left:var(--page-pad);right:var(--page-pad);bottom:14px;display:flex;justify-content:space-between;pointer-events:none}
+
+/* butter interstitial (logo) */
+.butter{position:relative;height:125vh}
+.butter__sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.butter__stage{position:absolute;left:50%;top:40%;width:min(40vw,480px);aspect-ratio:1665/896;transform:translate(-50%,-50%)}
+@media (max-width:720px){.butter__stage{width:64vw}}
+.butter__trail{position:absolute;left:0;top:0;width:100%;pointer-events:none}
+.butter__trail.b1{filter:blur(2.5px)}
+.butter__trail.b2{filter:blur(7px)}
+.butter__top{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;will-change:transform;filter:drop-shadow(0 1px 0 #0a0a0a)}
+.butter__cap{position:absolute;left:var(--page-pad);right:var(--page-pad);top:96px;display:flex;justify-content:space-between;gap:16px}
+.butter__proof{position:absolute;left:var(--page-pad);right:var(--page-pad);bottom:clamp(20px,5vh,56px);opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.butter__proof.in{opacity:1;transform:none}
+.proof__stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule)}
+.proof__stats div{padding:16px 16px 14px 0}
+.proof__stats b{display:block;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,3.6vw,52px);line-height:1;color:var(--fg)}
+.proof__stats span{display:block;margin-top:6px;font-size:12px;color:var(--fg-dim);line-height:1.4}
+.proof__why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid var(--rule);padding-top:14px;font-size:13px;line-height:1.5}
+.proof__why p::before{content:"+ ";color:var(--accent)}
+@media (max-width:720px){
+  .butter__stage{top:34%}
+  .proof__stats{grid-template-columns:1fr 1fr}
+  .proof__stats div{padding:12px 10px 10px 0}
+  .proof__why{grid-template-columns:1fr;gap:6px;font-size:12px}
+}
+
+/* index */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.filter-bar button{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;padding:7px 16px 7px 10px;border:1px solid var(--rule);border-radius:999px;transition:all .3s}
+.filter-bar button:hover{border-color:var(--fg)}
+.filter-bar .ic{width:26px;height:26px;display:inline-block;transition:transform .4s var(--ease)}
+.filter-bar .ic svg{width:100%;height:100%;overflow:visible}
+.filter-bar button:hover .ic{transform:rotate(-8deg) scale(1.1)}
+.filter-bar .ic.all{display:grid;place-items:center;font-size:16px;line-height:1}
+@media (min-width:721px){.filter-bar .ic.all{display:none}}
+.filter-bar button.active{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+.grid{display:flex;flex-wrap:wrap;gap:44px 20px;align-items:flex-start}
+.card{cursor:pointer;flex:none}
+.card__img{position:relative;overflow:hidden;background:#151515}
+.card__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s;filter:grayscale(.15)}
+.card:hover .card__img img{transform:scale(1.03);filter:none}
+.card__img .open{position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#0a0a0a;display:grid;place-items:center;font-size:18px;opacity:0;transform:scale(.6);transition:all .4s var(--ease)}
+.card:hover .open{opacity:1;transform:none}
+.card__meta{display:flex;justify-content:space-between;gap:16px;margin-top:14px;border-top:1px solid var(--rule);padding-top:12px}
+.card__title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(20px,2vw,30px);line-height:1.05;margin-top:8px}
+.card[hidden]{display:none}
+
+
+/* project overlay */
+.proj{position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;
+  clip-path:inset(100% 0 0 0);transition:clip-path .7s var(--ease);visibility:hidden}
+.proj.open{clip-path:inset(0 0 0 0);visibility:visible}
+.proj__bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:14px var(--page-pad);background:color-mix(in oklab,var(--bg) 75%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.proj__close{width:44px;height:44px;border-radius:50%;border:1px solid var(--fg);display:grid;place-items:center;font-size:18px;transition:all .3s}
+.proj__close:hover{background:var(--accent);border-color:var(--accent);color:#0a0a0a}
+.proj__cover{position:relative;height:min(82vh,900px);overflow:hidden}
+.film{position:relative;cursor:pointer;background:#000;overflow:hidden}
+.film img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .6s;filter:brightness(.8)}
+.film:hover img{transform:scale(1.03);filter:brightness(.95)}
+.film iframe,.film video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.film__play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(64px,8vw,104px);height:clamp(64px,8vw,104px);border-radius:50%;background:var(--accent);color:#0a0a0a;display:grid;place-items:center;font-size:clamp(20px,2.4vw,32px);box-shadow:0 10px 40px rgba(0,0,0,.4);transition:transform .4s var(--ease);z-index:2}
+.film:hover .film__play{transform:translate(-50%,-50%) scale(1.08)}
+.film__tag{position:absolute;left:14px;top:14px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(10,10,10,.7);padding:5px 9px;backdrop-filter:blur(6px)}
+.proj__cover.film::after{z-index:1;pointer-events:none}
+.proj__cover.film.playing::after{display:none}
+.proj__cover.film.playing{height:auto;aspect-ratio:16/9;max-height:86vh}
+.proj__cover.film.playing + .proj__head{margin-top:32px}
+.films{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.films .film{aspect-ratio:16/9;border-radius:10px}
+.films .film.v{aspect-ratio:9/16;max-width:340px}
+.films figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-dim);margin-top:8px}
+.badge-film{position:absolute;left:12px;bottom:12px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;background:var(--accent);color:#0a0a0a;padding:4px 8px;border-radius:999px}
+.proj__cover img{width:100%;height:100%;object-fit:cover}
+.proj__cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 2%,transparent 45%)}
+.proj__head{position:relative;margin-top:-18vh;z-index:1;padding:0 var(--page-pad)}
+.proj__num{font-family:'Anton',sans-serif;font-size:clamp(60px,10vw,160px);color:var(--accent);line-height:.85}
+.proj__title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(40px,7vw,112px);line-height:.9;max-width:14ch;margin-top:8px}
+.proj__info{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0 0;border-top:1px solid var(--rule);padding-top:18px}
+.proj__info h6{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-dim);margin-bottom:10px}
+.tag{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:5px 12px;font-size:12px;margin:0 6px 6px 0}
+.proj__gallery{display:flex;flex-wrap:wrap;gap:14px;padding:64px var(--page-pad) 32px}
+.proj__gallery figure{overflow:hidden;background:#151515;flex:none}
+.proj__gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.proj__nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);margin-top:40px}
+.proj__nav button{text-align:left;padding:40px var(--page-pad);transition:background .3s}
+.proj__nav button+button{text-align:right;border-left:1px solid var(--rule)}
+.proj__nav button:hover{background:#141414}
+.proj__nav .t{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(20px,2.6vw,40px);line-height:1;margin-top:8px}
+.proj__summary{font-size:clamp(18px,1.8vw,24px);line-height:1.45;max-width:900px;margin-top:40px}
+.proj__sec{padding:64px var(--page-pad) 0}
+.proj__sec>h4{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-dim);border-top:1px solid var(--rule);padding-top:14px;margin-bottom:28px}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.stat{padding:26px 22px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stat{min-width:0}
+.stat__v{font-family:'Anton',sans-serif;font-size:clamp(34px,3.6vw,56px);line-height:1;color:var(--accent);overflow-wrap:anywhere;letter-spacing:-.01em}
+.stat__l,.stat__n{overflow-wrap:anywhere}
+@media (max-width:720px){.stats{grid-template-columns:1fr 1fr}.stat{padding:18px 14px}.stat__v{font-size:clamp(26px,8vw,40px)}}
+.stat__l{margin-top:10px;font-size:14px}
+.stat__n{font-size:12px;opacity:.7;margin-top:4px}
+.credits{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));border-top:1px solid var(--rule)}
+.credits div{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule);margin-right:24px}
+.credits a:hover{color:var(--accent)}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;align-items:start}
+.posts .instagram-media{min-width:0 !important;max-width:100% !important;width:100% !important;margin:0 !important;border-radius:12px !important;background:#fff}
+.posts .ig-fallback{display:flex;align-items:center;justify-content:space-between;padding:18px;border:1px solid var(--rule);border-radius:12px}
+.proj__gallery figure{position:relative}
+.proj__gallery figcaption{position:absolute;left:10px;bottom:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:rgba(10,10,10,.7);padding:4px 8px;backdrop-filter:blur(6px)}
+@media (max-width:720px){.posts{grid-template-columns:1fr}}
+.press{list-style:none;border-top:1px solid var(--rule)}
+.press a{display:grid;grid-template-columns:minmax(140px,1.2fr) 2fr auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--rule);transition:padding .3s,color .3s}
+.press a:hover{padding-left:12px;color:var(--accent)}
+.press .o{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(18px,2vw,26px)}
+@media (max-width:720px){.press a{grid-template-columns:1fr auto}.press .ty{grid-column:1}}
+@media (max-width:720px){.proj__info{grid-template-columns:1fr}}
+
+/* footer */
+.footer{padding:clamp(80px,12vw,160px) var(--page-pad) 32px;border-top:1px solid var(--rule)}
+.footer__top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.footer__art{aspect-ratio:763/768;overflow:hidden;border-radius:4px}
+.footer__art video{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;background:#111}
+.footer__contact{margin-top:36px;font-size:clamp(16px,1.4vw,20px);line-height:1.8}
+.footer__contact a:hover{color:var(--accent)}
+@media (max-width:820px){.footer__top{grid-template-columns:1fr}}
+.footer__cta{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(56px,7.4vw,132px);line-height:.9}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-top:80px;border-top:1px solid var(--rule);padding-top:24px}
+.footer__grid h5{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-dim);margin-bottom:14px}
+.footer__grid a:hover{color:var(--accent)}
+.footer__mail{font-family:'Anton',sans-serif;text-transform:none;font-size:clamp(28px,4vw,56px);line-height:1}
+.footer__bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:80px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-dim)}
+@media (max-width:720px){.footer__grid{grid-template-columns:1fr}}
+
+/* ---- mobile first tweaks ---- */
+@media (max-width:720px){
+  .section{padding:64px var(--page-pad)}
+  .section__head{gap:14px;margin-bottom:28px}
+  .section__head .label-num{font-size:clamp(48px,14vw,72px)}
+  .section__head .lede{font-size:15px}
+  .filter-bar{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;margin-bottom:28px}
+  .filter-bar button{flex-direction:column;justify-content:center;gap:4px;padding:8px 4px;border-radius:14px;font-size:9.5px;letter-spacing:.06em;min-height:62px}
+  .filter-bar .ic{width:24px;height:24px}
+  .filter-bar .lbl-long{display:none}
+  .grid{gap:32px 12px}
+  .card__title{font-size:22px}
+  .proj__gallery{gap:8px;padding:40px var(--page-pad) 24px}
+  .proj__sec{padding:44px var(--page-pad) 0}
+  .hero{padding-top:84px}
+}
+@media (min-width:721px){.filter-bar .lbl-short{display:none}}
+
+/* ---- good vibe category colours ---- */
+[data-cat="event"]{--cat:var(--c-event)}
+[data-cat="production"]{--cat:var(--c-production)}
+[data-cat="influencer"]{--cat:var(--c-influencer)}
+.card .card__meta .mono:first-child{color:var(--cat,var(--fg-dim))}
+.card__img .open{background:var(--cat,var(--accent))}
+.rc__card .rc__label .mono{color:var(--cat,var(--accent))}
+.proj .proj__num{color:var(--cat,var(--accent))}
+.proj .stat__v{color:var(--cat,var(--accent))}
+.proj #proj-crumb{color:var(--cat,var(--fg))}
+.proj .tag{border-color:color-mix(in oklab,var(--cat,var(--rule)) 55%,transparent)}
+.proj .film__play{background:var(--cat,var(--accent))}
+.filter-bar button[data-k="event"].active{background:var(--c-event);border-color:var(--c-event)}
+.filter-bar button[data-k="production"].active{background:var(--c-production);border-color:var(--c-production)}
+.filter-bar button[data-k="influencer"].active{background:var(--c-influencer);border-color:var(--c-influencer)}
+.service[data-filter="event"]{--cat:var(--c-event)}
+.service[data-filter="production"]{--cat:var(--c-production)}
+.service[data-filter="influencer"]{--cat:var(--c-influencer)}
+.service .mono.dim{color:var(--cat)}
+.service:hover .service__title{color:var(--cat)}
+.service__title{transition:color .4s}
+
+/* logo wall */
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.logo-tile{position:relative;aspect-ratio:1;border-radius:22px;display:grid;place-items:center;padding:0;overflow:hidden;isolation:isolate;
+  background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(255,255,255,.05),0 10px 30px rgba(0,0,0,.35);
+  backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);transition:transform .5s var(--ease),border-color .4s}
+.logo-tile::before{content:"";position:absolute;width:60%;height:60%;right:-10%;bottom:-10%;border-radius:50%;background:var(--accent);filter:blur(40px);opacity:0;transition:opacity .5s;z-index:-1}
+.logo-tile::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(255,255,255,.18),transparent 40%);pointer-events:none}
+.logo-tile img{display:block;filter:grayscale(1) brightness(1.5);opacity:.85;transition:filter .5s,opacity .5s}
+.logo-tile:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.3)}
+.logo-tile:hover::before{opacity:.35}
+.logo-tile:hover img{filter:none;opacity:1}
+/* 黑底 JPG 的 LOGO：以亮度遮罩轉成透明底白色 */
+.lmask{display:block;background:var(--fg);-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat;-webkit-mask-mode:luminance;mask-mode:luminance}
+.logo-tile .lmask{width:100%;height:100%;opacity:.85;transition:background .5s,opacity .5s}
+.logo-tile:hover .lmask{opacity:1}
+.marquee__item .lmask{height:clamp(48px,6vw,84px);aspect-ratio:1}
+
+/* reveal */
+.fade{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.fade.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none}.marquee__track{animation:none}.proj{transition:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="crayon" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="7" result="w"/>
+    <feDisplacementMap in="SourceGraphic" in2="w" scale="3.2" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="g"/>
+    <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.55" result="gm"/>
+    <feComposite in="d" in2="gm" operator="in"/>
+  </filter>
+</svg>
+
+<nav class="nav">
+  <a class="nav__logo" href="#top" aria-label="VYPE Creative"><img src="assets/vype-logo-white.png" alt="VYPE Creative"></a>
+  <div class="nav__links">
+    <a class="nav__link" href="#about">About</a>
+    <a class="nav__link" href="#what-we-do">What We Do</a>
+    <a class="nav__link keep" href="#work">Work</a>
+    <a class="nav__link" href="#brands">Brands</a>
+    <a class="btn btn--accent keep" style="padding:10px 16px" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO — Reflect shader background -->
+  <section class="hero" id="hero">
+    <div class="hero__fx" id="reflect"></div>
+    <div class="hero__meta mono">
+      <div><span class="dim">Index / 001</span><span class="val">Culture-driven PR agency</span></div>
+      <div><span class="dim">Based / Taipei</span><span class="val">Est. 2020</span></div>
+      <div><span class="dim">Services</span><span class="val">Event · Production · Influencer</span></div>
+      <div><span class="dim">Status</span><span class="val accent">● Open for projects</span></div>
+    </div>
+    <h1 class="hero__title display">Good vibe<br><span class="accent">+</span> <span class="outline">Hype</span><br>= Vype<span class="accent">.</span></h1>
+    <div class="hero__bottom">
+      <p class="hero__sub">VYPE Creative is a culture-driven PR agency born from streetwear media, combining media sensibility with street hype. From visuals to influencer campaigns, we craft experiences powered by good vibes and hype ideas.</p>
+      <div class="hero__ctas">
+        <a class="btn" href="#work">View Work →</a>
+        <a class="btn btn--accent" href="#contact">VYPE with us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marq"></div></div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section__head fade">
+      <div><span class="mono dim">— 02 / About</span><span class="label-num">Who we are</span></div>
+      <p class="lede dim">Culture-driven PR agency based in Taipei.</p>
+    </div>
+    <div class="who">
+      <div class="who__visual fade"><img src="assets/about.jpg" width="3200" height="2133" alt="Red Bull Purple Edition" loading="lazy"><span class="frame-no">RED BULL PURPLE EDITION</span></div>
+      <div class="who__copy fade">
+        <p>VYPE Creative is a <span class="accent">culture-driven</span> PR agency born from streetwear media, combining media sensibility with street hype.</p>
+        <p class="dim" style="margin-top:20px">From visuals to influencer campaigns, we craft experiences powered by good vibes and hype ideas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERSTITIAL: VYPECREATIVE -->
+  <section class="butter" id="butter" aria-label="VYPE Creative">
+    <div class="butter__sticky">
+      <div class="butter__cap mono dim"><span>— Good vibe + Hype</span><span>Taipei / Since 2020</span></div>
+      <div class="butter__stage" id="butter-stage"></div>
+      <div class="butter__proof" id="butter-proof">
+        <div class="proof__stats" id="proof-stats"></div>
+        <div class="proof__why">
+          <p>Streetwear-media roots — we plan around what media and communities actually pick up.</p>
+          <p>One team from event planning and production to KOL seeding and media relations.</p>
+          <p>Every project closes with a results report you can take to your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="section" id="what-we-do">
+    <div class="section__head fade">
+      <div><span class="mono dim">— 03 / Services</span><span class="label-num">What we do</span></div>
+      <p class="lede dim">Brand Event / PR · Production · Influencer Cases</p>
+    </div>
+    <div class="services" id="services"></div>
+  </section>
+
+  <!-- CAROUSEL -->
+  <section id="work">
+    <div class="section" style="padding-bottom:40px">
+      <div class="section__head fade" style="margin-bottom:0">
+        <div><span class="mono dim">— 04 / Selected Work</span><span class="label-num">Projects</span></div>
+        <p class="lede dim">Drag the ring. Tap a cover to open the full project.</p>
+      </div>
+    </div>
+    <div class="rc-wrap">
+      <div class="rc" id="rc"><div class="rc__tilt"><div class="rc__ring" id="ring"></div></div></div>
+      <div class="rc-hint mono dim"><span>← Drag →</span><span id="rc-count"></span></div>
+    </div>
+  </section>
+
+  <!-- INDEX -->
+  <section class="section" id="index">
+    <div class="section__head fade">
+      <div><span class="mono dim">— 05 / Index</span><span class="label-num">All work</span></div>
+      <p class="lede dim">Brand events, pop-ups, press conferences and visual productions.</p>
+    </div>
+    <div class="filter-bar" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="section" id="brands" style="padding-top:0">
+    <div class="section__head fade">
+      <div><span class="mono dim">— 06 / Clients</span><span class="label-num">Brands that trust us</span></div>
+      <p class="lede dim">Selected clients we have created with.</p>
+    </div>
+    <div class="logos" id="logos"></div>
+  </section>
+</main>
+
+<!-- FOOTER / CONTACT -->
+<footer class="footer" id="contact">
+  <div class="footer__top">
+    <div class="footer__art fade"><video src="video/footer-art.mp4" poster="assets/footer-art.jpg" muted loop playsinline preload="metadata" aria-label="VYPE Creative"></video></div>
+    <div class="fade">
+      <h2 class="footer__cta">VYPE your<br><span class="outline">ideas</span><br>with us<span class="accent">.</span></h2>
+      <div class="footer__contact">
+        <p>Money Chien</p>
+        <p><span class="mono dim">Mail:</span> <a href="mailto:money@vypecreative.com">money@vypecreative.com</a></p>
+        <p><span class="mono dim">Tel:</span> <a href="tel:+886919208395">(+886) 919-208-395</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer__grid">
+    <div>
+      <h5>+ Contact</h5>
+      <a class="footer__mail" href="mailto:money@vypecreative.com">money@vype<br>creative.com →</a>
+    </div>
+    <div>
+      <h5>+ Person</h5>
+      <p>Money Chien</p>
+      <p><a href="tel:+886919208395" class="dim">(+886) 919-208-395</a></p>
+      <p class="dim">Taipei, Taiwan</p>
+    </div>
+    <div>
+      <h5>+ Navigate</h5>
+      <p><a href="#about">About</a></p>
+      <p><a href="#what-we-do">What We Do</a></p>
+      <p><a href="#work">Work</a></p>
+      <p><a href="#brands">Brands</a></p>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© Copyright 2025 - vype creative Co., Ltd. - All Rights Reserved.</span><span>VYPE CREATIVE / TPE</span></div>
+</footer>
+
+<!-- PROJECT OVERLAY -->
+<div class="proj" id="proj" role="dialog" aria-modal="true" aria-label="Project">
+  <div class="proj__bar"><span class="mono" id="proj-crumb"></span><button class="proj__close" id="proj-close" aria-label="Close">✕</button></div>
+  <div id="proj-body"></div>
+</div>
+
+<script>
+/* ============ DATA (generated by _build.py) ============ */
+window.VYPE = {"projects": [{"slug": "simply-kimura", "num": "01", "title": "Simply Brand Ambassador “Takuya Kimura” Press Conference", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR"], "client": "Simply 新普利", "photos": [{"src": "photos/simply-kimura-01.jpg", "thumb": "photos/simply-kimura-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/simply-kimura-02.jpg", "thumb": "photos/simply-kimura-02-s.jpg", "w": 1333, "h": 2000}], "year": "2025", "summary": "Press conference in Taipei for Simply's Night Enzyme series with brand ambassador Takuya Kimura, handling venue, production and media relations.", "results": [{"label": "Media coverage", "value": "506", "note": "news reports within 5 days of the event"}, {"label": "Media outlets attended", "value": "62", "note": "outlets"}, {"label": "Journalists attended", "value": "109", "note": "reporters & media"}], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "dickies-energy-store", "num": "02", "title": "Dickies Energy Store Launch Event", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR"], "client": "Dickies", "photos": [{"src": "photos/dickies-energy-store-01.jpg", "thumb": "photos/dickies-energy-store-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/dickies-energy-store-02.jpg", "thumb": "photos/dickies-energy-store-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/dickies-energy-store-03.jpg", "thumb": "photos/dickies-energy-store-03-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/dickies-energy-store-04.jpg", "thumb": "photos/dickies-energy-store-04-s.jpg", "w": 2000, "h": 1333}], "year": "2022", "summary": "Grand opening of the Dickies Energy Store workwear concept store, with a press conference and a VIP party celebrating the brand's 100th anniversary.", "results": [{"label": "Media coverage", "value": "50", "note": "articles"}, {"label": "Media attendance", "value": "29", "note": "outlets / 40 journalists"}, {"label": "KOLs at VIP party", "value": "80", "note": "KOLs"}, {"label": "Instagram Stories", "value": "64", "note": "stories"}, {"label": "Top celebrity post", "value": "29K", "note": "Instagram likes on host artist's event post"}], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "redbull-purple", "num": "03", "title": "Red Bull Purple Edition", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR"], "client": "Red Bull", "photos": [{"src": "photos/redbull-purple-01.jpg", "thumb": "photos/redbull-purple-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/redbull-purple-02.jpg", "thumb": "photos/redbull-purple-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/redbull-purple-03.jpg", "thumb": "photos/redbull-purple-03-s.jpg", "w": 1820, "h": 1204}, {"src": "photos/redbull-purple-04.jpg", "thumb": "photos/redbull-purple-04-s.jpg", "w": 1824, "h": 1210}], "year": "2024", "summary": "Immersive 'Purple Planet' launch party for Red Bull Purple Edition at AMBI SPACE ONE, run in four sessions for trade, media and KOLs, plus a KOL gift-box seeding.", "results": [{"label": "KOL guests attended", "value": "42", "note": "incl. plus-ones"}, {"label": "Gift boxes seeded", "value": "83", "note": "KOL gift boxes"}, {"label": "Instagram Stories", "value": "57", "note": "unboxing stories"}], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "jacquemus-popup", "num": "04", "title": "art haus JACQUEMUS POP-UP", "cat": "event", "catLabel": "Brand Event", "roles": ["Production Management"], "client": "art haus × JACQUEMUS", "photos": [{"src": "photos/jacquemus-popup-01.jpg", "thumb": "photos/jacquemus-popup-01-s.jpg", "w": 2000, "h": 1126}, {"src": "photos/jacquemus-popup-02.jpg", "thumb": "photos/jacquemus-popup-02-s.jpg", "w": 962, "h": 1198}, {"src": "photos/jacquemus-popup-03.jpg", "thumb": "photos/jacquemus-popup-03-s.jpg", "w": 958, "h": 1200}, {"src": "photos/jacquemus-popup-04.jpg", "thumb": "photos/jacquemus-popup-04-s.jpg", "w": 960, "h": 1200}, {"src": "photos/jacquemus-popup-05.jpg", "thumb": "photos/jacquemus-popup-05-s.jpg", "w": 954, "h": 1198}, {"src": "photos/jacquemus-popup-06.jpg", "thumb": "photos/jacquemus-popup-06-s.jpg", "w": 960, "h": 1198}, {"src": "photos/jacquemus-popup-07.jpg", "thumb": "photos/jacquemus-popup-07-s.jpg", "w": 960, "h": 1200}], "year": "2023", "summary": "JACQUEMUS SS23 pop-up store at art haus (Shin Kong Mitsukoshi A4), covering pop-up fixture production and a KOL/VIP cocktail party.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "uniqlo-pufftech", "num": "05", "title": "UNIQLO PUFFTECH ATT POP-UP", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR"], "client": "UNIQLO", "photos": [{"src": "photos/uniqlo-pufftech-01.jpg", "thumb": "photos/uniqlo-pufftech-01-s.jpg", "w": 2000, "h": 1335}, {"src": "photos/uniqlo-pufftech-02.jpg", "thumb": "photos/uniqlo-pufftech-02-s.jpg", "w": 2000, "h": 1335}, {"src": "photos/uniqlo-pufftech-03.jpg", "thumb": "photos/uniqlo-pufftech-03-s.jpg", "w": 1335, "h": 2000}, {"src": "photos/uniqlo-pufftech-04.jpg", "thumb": "photos/uniqlo-pufftech-04-s.jpg", "w": 1600, "h": 2000}, {"src": "photos/uniqlo-pufftech-05.jpg", "thumb": "photos/uniqlo-pufftech-05-s.jpg", "w": 1045, "h": 1567}, {"src": "photos/uniqlo-pufftech-06.jpg", "thumb": "photos/uniqlo-pufftech-06-s.jpg", "w": 1331, "h": 2000}], "year": "2024", "summary": "PUFFTECH 'Airy Warmth Dome' pop-up at ATT 4 FUN: a media and KOL preview followed by two days of consumer experience.", "results": [{"label": "Total attendance", "value": "1,752", "note": "event visitors"}, {"label": "Media coverage", "value": "193", "note": "clippings (TV 11 / print 1 / online 63 / social 118)"}, {"label": "Media attended", "value": "51", "note": "outlets"}, {"label": "KOLs attended", "value": "55", "note": "KOLs (132% of target)"}, {"label": "App downloads", "value": "1,438", "note": "UNIQLO app discount downloads"}], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "honda-media-day", "num": "06", "title": "Honda Media Day", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management"], "client": "Honda", "photos": [{"src": "photos/honda-media-day-01.jpg", "thumb": "photos/honda-media-day-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/honda-media-day-02.jpg", "thumb": "photos/honda-media-day-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/honda-media-day-03.jpg", "thumb": "photos/honda-media-day-03-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/honda-media-day-04.jpg", "thumb": "photos/honda-media-day-04-s.jpg", "w": 1333, "h": 2000}], "year": "2024", "summary": "2024 Honda Media Day, a spring media gathering themed 'How we move you', with a tech-tunnel entrance, product displays for automobiles, motorcycles and power products, and stage shows.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "vans-workshop", "num": "07", "title": "VANS Workshop", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management"], "client": "VANS", "photos": [{"src": "photos/vans-workshop-01.jpg", "thumb": "photos/vans-workshop-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/vans-workshop-02.jpg", "thumb": "photos/vans-workshop-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/vans-workshop-03.jpg", "thumb": "photos/vans-workshop-03-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/vans-workshop-04.jpg", "thumb": "photos/vans-workshop-04-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/vans-workshop-05.jpg", "thumb": "photos/vans-workshop-05-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/vans-workshop-06.jpg", "thumb": "photos/vans-workshop-06-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/vans-workshop-07.jpg", "thumb": "photos/vans-workshop-07-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/vans-workshop-08.jpg", "thumb": "photos/vans-workshop-08-s.jpg", "w": 1333, "h": 2000}], "year": "2023", "summary": "Hands-on tufted rug workshop at the VANS SOGO Zhongxiao store, where KOLs, media and VIP customers each made a rug shaped like a Vans shoe.", "results": [{"label": "KOLs in workshop", "value": "8", "note": "KOLs"}, {"label": "KOL Instagram posts", "value": "8", "note": "posts"}, {"label": "Media features", "value": "3", "note": "outlets (GQ, JUKSY, COOL)"}], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "xinmeiqi-party", "num": "08", "title": "新美齊 Year-End Staff Party", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management"], "client": "新美齊集團", "photos": [{"src": "photos/xinmeiqi-party-01.jpg", "thumb": "photos/xinmeiqi-party-01-s.jpg", "w": 2000, "h": 1334}, {"src": "photos/xinmeiqi-party-02.jpg", "thumb": "photos/xinmeiqi-party-02-s.jpg", "w": 2000, "h": 1334}, {"src": "photos/xinmeiqi-party-03.jpg", "thumb": "photos/xinmeiqi-party-03-s.jpg", "w": 2000, "h": 1334}, {"src": "photos/xinmeiqi-party-04.jpg", "thumb": "photos/xinmeiqi-party-04-s.jpg", "w": 2000, "h": 1334}], "year": "2023", "summary": "Year-end gala for the Xin Mei Qi Group at the Far Eastern Plaza Hotel, Taipei, themed 'Light the Jean Group', with a celebrity performance, awards and a charity lucky draw.", "results": [], "films": [], "credits": [], "press": [{"outlet": "@aiyachang1988", "type": "Host — Instagram post", "url": "https://www.instagram.com/aiyachang1988/p/CnWkExGLpLq/"}, {"outlet": "@esther88", "type": "Performer — Instagram post", "url": "https://www.instagram.com/esther88/p/CnJnIBlvJUE/"}], "posts": []}, {"slug": "uniqlo-tryon", "num": "09", "title": "UNIQLO Influencer Try-on Event", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR"], "client": "UNIQLO", "photos": [{"src": "photos/uniqlo-tryon-01.jpg", "thumb": "photos/uniqlo-tryon-01-s.jpg", "w": 1500, "h": 1000}, {"src": "photos/uniqlo-tryon-02.jpg", "thumb": "photos/uniqlo-tryon-02-s.jpg", "w": 1500, "h": 1000}, {"src": "photos/uniqlo-tryon-03.jpg", "thumb": "photos/uniqlo-tryon-03-s.jpg", "w": 1335, "h": 2000}, {"src": "photos/uniqlo-tryon-04.jpg", "thumb": "photos/uniqlo-tryon-04-s.jpg", "w": 1335, "h": 2000}, {"src": "photos/uniqlo-tryon-05.jpg", "thumb": "photos/uniqlo-tryon-05-s.jpg", "w": 1335, "h": 2000}, {"src": "photos/uniqlo-tryon-06.jpg", "thumb": "photos/uniqlo-tryon-06-s.jpg", "w": 1000, "h": 1500}], "year": "2025", "summary": "UNIQLO 2025 Spring influencer try-on event at PARTIPOST Taipei, with three influencer sessions and a press preview.", "results": [{"label": "Attendees", "value": "49", "note": "influencers & media"}], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "mizuno-nagai", "num": "10", "title": "MIZUNO 永井博 Event", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR"], "client": "MIZUNO", "photos": [{"src": "photos/mizuno-nagai-01.jpg", "thumb": "photos/mizuno-nagai-01-s.jpg", "w": 2000, "h": 1335}, {"src": "photos/mizuno-nagai-02.jpg", "thumb": "photos/mizuno-nagai-02-s.jpg", "w": 2000, "h": 1335}, {"src": "photos/mizuno-nagai-03.jpg", "thumb": "photos/mizuno-nagai-03-s.jpg", "w": 2000, "h": 1335}, {"src": "photos/mizuno-nagai-04.jpg", "thumb": "photos/mizuno-nagai-04-s.jpg", "w": 1335, "h": 2000}, {"src": "photos/mizuno-nagai-05.jpg", "thumb": "photos/mizuno-nagai-05-s.jpg", "w": 1335, "h": 2000}], "year": "2024", "summary": "Exhibition at Mumble Room and media outreach for the MIZUNO x Hiroshi Nagai limited-edition sneaker collaboration.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "mizuno-equick", "num": "11", "title": "MIZUNO EQUICK POP-UP", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR"], "client": "MIZUNO", "photos": [{"src": "photos/mizuno-equick-01.jpg", "thumb": "photos/mizuno-equick-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/mizuno-equick-02.jpg", "thumb": "photos/mizuno-equick-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/mizuno-equick-03.jpg", "thumb": "photos/mizuno-equick-03-s.jpg", "w": 2000, "h": 1333}], "year": "2025", "summary": "MIZUNO x EQUICK VIP and media day at the EQUICK flagship store, unveiling MIZUNO's first e-bike together with its 2025 SS footwear.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "mizuno-wave-prophecy", "num": "12", "title": "MIZUNO × Setsumasa Kobayashi WAVE PROPHECY RING MOC Launch", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR", "Media Relations"], "client": "MIZUNO", "photos": [{"src": "photos/mizuno-wave-prophecy-01.jpg", "thumb": "photos/mizuno-wave-prophecy-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/mizuno-wave-prophecy-02.jpg", "thumb": "photos/mizuno-wave-prophecy-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/mizuno-wave-prophecy-03.jpg", "thumb": "photos/mizuno-wave-prophecy-03-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/mizuno-wave-prophecy-04.jpg", "thumb": "photos/mizuno-wave-prophecy-04-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/mizuno-wave-prophecy-05.jpg", "thumb": "photos/mizuno-wave-prophecy-05-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/mizuno-wave-prophecy-06.jpg", "thumb": "photos/mizuno-wave-prophecy-06-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/mizuno-wave-prophecy-07.jpg", "thumb": "photos/mizuno-wave-prophecy-07-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/mizuno-wave-prophecy-08.jpg", "thumb": "photos/mizuno-wave-prophecy-08-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/mizuno-wave-prophecy-09.jpg", "thumb": "photos/mizuno-wave-prophecy-09-s.jpg", "w": 1333, "h": 2000}], "year": 2026, "summary": "A preview and craft-experience launch for the MIZUNO × Setsumasa Kobayashi WAVE PROPHECY RING MOC, staged inside a century-old building in Dadaocheng with a leather-stamping workshop and a DJ set.", "results": [{"label": "Social posts", "value": "140", "note": "Earned stories, posts and Reels from guests (118 / 16 / 6)"}, {"label": "Accounts posting", "value": "71", "note": "65 individual creators + 6 media accounts"}, {"label": "KOLs attended", "value": "22", "note": "Confirmed on the guest list"}, {"label": "Online media coverage", "value": "7 outlets", "note": "Including JUKSY, COOL-STYLE, CHILLING, KENLU.net, KIKS, Hypebeast, HK01"}], "films": [], "credits": [], "press": [{"outlet": "Mizuno Sportstyle TW (official)", "type": "Instagram post", "url": "https://www.instagram.com/mizuno_sportstyle_tw/p/DaP0IS4k8ki/"}], "posts": []}, {"slug": "norda-fieldday", "num": "13", "title": "norda × FIELD DAY Taiwan Trail Run & Pop-up", "cat": "event", "catLabel": "Brand Event", "roles": ["Event Planning", "Production Management", "PR", "Media Relations"], "client": "norda / FIELD DAY", "photos": [{"src": "photos/norda-fieldday-09.jpg", "thumb": "photos/norda-fieldday-09-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/norda-fieldday-01.jpg", "thumb": "photos/norda-fieldday-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/norda-fieldday-02.jpg", "thumb": "photos/norda-fieldday-02-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/norda-fieldday-03.jpg", "thumb": "photos/norda-fieldday-03-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/norda-fieldday-04.jpg", "thumb": "photos/norda-fieldday-04-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/norda-fieldday-05.jpg", "thumb": "photos/norda-fieldday-05-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/norda-fieldday-06.jpg", "thumb": "photos/norda-fieldday-06-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/norda-fieldday-07.jpg", "thumb": "photos/norda-fieldday-07-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/norda-fieldday-08.jpg", "thumb": "photos/norda-fieldday-08-s.jpg", "w": 1333, "h": 2000}], "year": 2025, "summary": "A trail run and pop-up in Taipei marking co-founder Nick Martire's first visit to Taiwan and the 001A's upgrade to an Arnitel® TPEE midsole, hosted with local retailer FIELD DAY.", "results": [], "films": [], "credits": [], "press": [{"outlet": "Outsiders", "type": "Instagram post", "url": "https://www.instagram.com/outsiders.mag/p/DRhUUeBE0mw/"}, {"outlet": "HYPEBEAST TW", "type": "Instagram Reel", "url": "https://www.instagram.com/hypebeasttw/reel/DRgVsLEktUS/"}], "posts": []}, {"slug": "hoka-clifton-utl", "num": "01", "title": "HOKA Clifton UTL Lifestyle Campaign", "cat": "production", "catLabel": "Production", "roles": ["KOL Matchmaking", "Campaign Planning", "KOL Seeding", "Media Relations"], "client": "HOKA", "photos": [{"src": "photos/hoka-clifton-utl-02.jpg", "thumb": "photos/hoka-clifton-utl-02-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-01.jpg", "thumb": "photos/hoka-clifton-utl-01-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-03.jpg", "thumb": "photos/hoka-clifton-utl-03-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-04.jpg", "thumb": "photos/hoka-clifton-utl-04-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-05.jpg", "thumb": "photos/hoka-clifton-utl-05-s.jpg", "w": 1472, "h": 2000}, {"src": "photos/hoka-clifton-utl-06.jpg", "thumb": "photos/hoka-clifton-utl-06-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-07.jpg", "thumb": "photos/hoka-clifton-utl-07-s.jpg", "w": 2000, "h": 1506}, {"src": "photos/hoka-clifton-utl-08.jpg", "thumb": "photos/hoka-clifton-utl-08-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-09.jpg", "thumb": "photos/hoka-clifton-utl-09-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-10.jpg", "thumb": "photos/hoka-clifton-utl-10-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-11.jpg", "thumb": "photos/hoka-clifton-utl-11-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-12.jpg", "thumb": "photos/hoka-clifton-utl-12-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-13.jpg", "thumb": "photos/hoka-clifton-utl-13-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-14.jpg", "thumb": "photos/hoka-clifton-utl-14-s.jpg", "w": 1495, "h": 2000}, {"src": "photos/hoka-clifton-utl-15.jpg", "thumb": "photos/hoka-clifton-utl-15-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-16.jpg", "thumb": "photos/hoka-clifton-utl-16-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-17.jpg", "thumb": "photos/hoka-clifton-utl-17-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-18.jpg", "thumb": "photos/hoka-clifton-utl-18-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-19.jpg", "thumb": "photos/hoka-clifton-utl-19-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-20.jpg", "thumb": "photos/hoka-clifton-utl-20-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-21.jpg", "thumb": "photos/hoka-clifton-utl-21-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-22.jpg", "thumb": "photos/hoka-clifton-utl-22-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-23.jpg", "thumb": "photos/hoka-clifton-utl-23-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-24.jpg", "thumb": "photos/hoka-clifton-utl-24-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-25.jpg", "thumb": "photos/hoka-clifton-utl-25-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-26.jpg", "thumb": "photos/hoka-clifton-utl-26-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-27.jpg", "thumb": "photos/hoka-clifton-utl-27-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-28.jpg", "thumb": "photos/hoka-clifton-utl-28-s.jpg", "w": 2000, "h": 1500}, {"src": "photos/hoka-clifton-utl-29.jpg", "thumb": "photos/hoka-clifton-utl-29-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/hoka-clifton-utl-30.jpg", "thumb": "photos/hoka-clifton-utl-30-s.jpg", "w": 2000, "h": 1500}], "year": "2026", "summary": "'Limitless' lifestyle campaign for the HOKA Clifton UTL, with KOLs 傅昱 and Kevin in hero videos and Instagram content.", "results": [{"label": "Media placements", "value": "16", "note": "articles, features & social posts"}, {"label": "Media outlets", "value": "10", "note": "incl. GQ & VOGUE Taiwan"}, {"label": "KOL hero films", "value": "2", "note": "傅昱 / Kevin"}], "films": [{"type": "file", "vertical": true, "src": "video/hoka-fuyu.mp4", "poster": "photos/hoka-clifton-utl-01-s.jpg", "title": "HOKA Clifton UTL — 傅昱"}, {"type": "file", "vertical": true, "src": "video/hoka-kevin.mp4", "poster": "photos/hoka-clifton-utl-19-s.jpg", "title": "HOKA Clifton UTL — Kevin"}], "credits": [{"role": "Client", "handles": ["hoka_taiwan"]}, {"role": "Talent", "handles": ["cococoralcorona", "4d_1"]}, {"role": "Project Lead", "handles": ["aka_money"]}, {"role": "Creative Producer", "handles": ["evan.littlewong"]}, {"role": "Director", "handles": ["yiangod"]}, {"role": "Videographer", "handles": ["miyazaki_chen"]}, {"role": "Photographer", "handles": ["chengchungyao_"]}, {"role": "Styling", "handles": ["6bl_lb", "4d_1"]}, {"role": "Hair", "handles": ["lukekin216"]}, {"role": "Make up", "handles": ["bean_makeup"]}], "press": [{"outlet": "Bouncin", "type": "Website article", "url": "https://www.bouncin.net/p/news/new-stuff/6194/hoka-clifton-utl-emma-rogue"}, {"outlet": "JUKSY", "type": "Roundup — Sep sneaker picks", "url": "https://www.juksy.com/article/150749"}, {"outlet": "JUKSY", "type": "Website article", "url": "https://www.juksy.com/article/150795"}, {"outlet": "潮癮 chilling", "type": "Website article — Kevin Lin & 傅昱", "url": "https://www.marieclaire.com.tw/fashion/news/95875"}, {"outlet": "Marie Claire 美麗佳人", "type": "Facebook post", "url": "https://www.facebook.com/marieclaire.tw/posts/1504295221729512/"}, {"outlet": "Marie Claire 美麗佳人", "type": "Website article", "url": "https://www.marieclaire.com.tw/fashion/news/95747"}, {"outlet": "潮流誌 InTrendLog", "type": "Roundup", "url": "https://intrendlog.org/2026/09/04/asics-hoka-skechers-adidas-palladium/"}, {"outlet": "GirlStyle 女生日常", "type": "Website article", "url": "https://girlstyle.com/tw/article/547270/hoka-%E7%B4%90%E7%B4%84"}, {"outlet": "Women 女人我最大", "type": "Feature story", "url": "https://woman.tvbs.com.tw/fashion/67114"}, {"outlet": "CooL", "type": "Website article", "url": "https://www.cool-style.com.tw/wd2/archives/1341232-%E8%B7%91%E9%9E%8B%E5%9F%BA%E5%9B%A0%E8%BD%89%E5%8C%96%E6%97%A5%E5%B8%B8%E7%A9%BF%E6%90%AD%E8%AA%9E%E8%A8%80%EF%BC%81hoka-%E5%85%A8%E6%96%B0-clifton-utl-%E6%AD%A3%E5%BC%8F%E7%99%BC%E4%BD%88"}, {"outlet": "GQ Taiwan", "type": "Partnership feature", "url": "https://www.gq.com.tw/special/hoka-clifton-utl"}, {"outlet": "GQ Taiwan", "type": "Instagram partnership post", "url": "https://www.instagram.com/p/DdEDNaCjEbJ/"}, {"outlet": "GQ Taiwan", "type": "Facebook partnership post", "url": "https://www.facebook.com/GQTaiwan/posts/pfbid025oLbAv1Uguos65zzkJDGCitExzrKPmr6KVsnTzHLmTd6Wugg6NcJZXAf5SUdqPahl"}, {"outlet": "VOGUE Taiwan", "type": "Partnership feature", "url": "https://www.vogue.com.tw/special/hoka-cliftonutl-limit-less"}, {"outlet": "VOGUE Taiwan", "type": "Instagram partnership post", "url": "https://www.instagram.com/p/DdGP_L3ICCh/"}, {"outlet": "HOKA Taiwan (official)", "type": "Instagram Reel — 傅昱", "url": "https://www.instagram.com/hoka_taiwan/reel/DdBcDqWzLN9/"}], "posts": []}, {"slug": "timberland-mv", "num": "02", "title": "Timberland MV Product Placement", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Timberland", "photos": [{"src": "photos/timberland-mv-01.jpg", "thumb": "photos/timberland-mv-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/timberland-mv-02.jpg", "thumb": "photos/timberland-mv-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/timberland-mv-03.jpg", "thumb": "photos/timberland-mv-03-s.jpg", "w": 2000, "h": 1333}], "year": "2019", "summary": "'TIMBS ON MY FEET' music video with rapper Trout Fresh and the IP Locker dance crew, placing Timberland in Taiwan's hip-hop and street-dance scene.", "results": [{"label": "YouTube views", "value": "2.1M+", "note": "public count on the official MV, Sep 2026"}], "films": [{"type": "youtube", "id": "L3oDm5ff1to", "title": "Trout Fresh 呂士軒 — 通勤打理 / Suit up (Official MV)"}], "credits": [], "press": [], "posts": []}, {"slug": "dickies-mv", "num": "03", "title": "Dickies MV Product Placement", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Dickies", "photos": [{"src": "photos/dickies-mv-03.jpg", "thumb": "photos/dickies-mv-03-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/dickies-mv-02.jpg", "thumb": "photos/dickies-mv-02-s.jpg", "w": 2000, "h": 1333}], "year": "2022", "summary": "Product placement in 'still here', the music video for the Dickies 100th-anniversary theme song, backed by streetwear media coverage and Instagram promotion.", "results": [{"label": "YouTube views", "value": "68,349", "note": "views"}, {"label": "YouTube likes", "value": "2,991", "note": "likes"}, {"label": "Instagram reach", "value": "33,449", "note": "accounts reached by a featured post"}, {"label": "Post engagement", "value": "4,783", "note": "interactions on the same post"}, {"label": "Instagram Stories", "value": "38", "note": "stories"}], "films": [{"type": "youtube", "id": "nsSyPEGrogw", "title": "【Still Here】蛋頭BG8LOCC x Multiverse x 西屯純愛組 (Official MV)"}, {"type": "file", "src": "video/dickies-stillhere-short.mp4", "poster": "photos/dickies-mv-02-s.jpg", "title": "Still Here — Short cut"}], "credits": [], "press": [], "posts": []}, {"slug": "timberland-film", "num": "04", "title": "Timberland Branding Film", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Timberland", "photos": [{"src": "photos/timberland-film-01.jpg", "thumb": "photos/timberland-film-01-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/timberland-film-02.jpg", "thumb": "photos/timberland-film-02-s.jpg", "w": 2000, "h": 1333}, {"src": "photos/timberland-film-03.jpg", "thumb": "photos/timberland-film-03-s.jpg", "w": 2000, "h": 1333}], "year": "2019", "summary": null, "results": [], "films": [{"type": "youtube", "id": "ax6XsWZIaPQ", "title": "Timberland BROOKLYN #ZipGo — 邱凱"}, {"type": "youtube", "id": "XVvekMiDrLY", "title": "Timberland BROOKLYN #ZipGo — Daniel Chia"}, {"type": "youtube", "id": "FapzWW3jkPs", "title": "Timberland BROOKLYN #ZipGo — JAYROLL"}], "credits": [], "press": [], "posts": []}, {"slug": "dickies-gordon", "num": "05", "title": "Dickies Gordon Visual Branding Shoot", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Dickies", "photos": [{"src": "photos/dickies-gordon-01.jpg", "thumb": "photos/dickies-gordon-01-s.jpg", "w": 1228, "h": 1818}, {"src": "photos/dickies-gordon-02.jpg", "thumb": "photos/dickies-gordon-02-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-gordon-03.jpg", "thumb": "photos/dickies-gordon-03-s.jpg", "w": 1228, "h": 1818}, {"src": "photos/dickies-gordon-04.jpg", "thumb": "photos/dickies-gordon-04-s.jpg", "w": 1334, "h": 2000}], "year": "2024", "summary": "Visual branding shoot with rapper GorDoN at a music studio and a street basketball court.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "dickies-artshow", "num": "06", "title": "Dickies ArtShow Visual Branding Shoot", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Dickies", "photos": [{"src": "photos/dickies-artshow-01.jpg", "thumb": "photos/dickies-artshow-01-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-artshow-02.jpg", "thumb": "photos/dickies-artshow-02-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-artshow-03.jpg", "thumb": "photos/dickies-artshow-03-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-artshow-04.jpg", "thumb": "photos/dickies-artshow-04-s.jpg", "w": 1333, "h": 2000}], "year": "2025", "summary": "Visual branding shoot with ArtShow, a dancer, DJ and graffiti artist.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "dickies-bradley", "num": "07", "title": "Dickies Bradley Visual Branding Shoot", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Dickies", "photos": [{"src": "photos/dickies-bradley-01.jpg", "thumb": "photos/dickies-bradley-01-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-bradley-02.jpg", "thumb": "photos/dickies-bradley-02-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-bradley-03.jpg", "thumb": "photos/dickies-bradley-03-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-bradley-04.jpg", "thumb": "photos/dickies-bradley-04-s.jpg", "w": 1333, "h": 2000}], "year": "2025", "summary": "Visual branding shoot with creator Bradley, with photos shared to his Instagram.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "dickies-walter", "num": "08", "title": "Dickies Walter Visual Branding Shoot", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Dickies", "photos": [{"src": "photos/dickies-walter-01.jpg", "thumb": "photos/dickies-walter-01-s.jpg", "w": 1228, "h": 1818}, {"src": "photos/dickies-walter-02.jpg", "thumb": "photos/dickies-walter-02-s.jpg", "w": 1228, "h": 1818}, {"src": "photos/dickies-walter-03.jpg", "thumb": "photos/dickies-walter-03-s.jpg", "w": 2000, "h": 1334}, {"src": "photos/dickies-walter-04.jpg", "thumb": "photos/dickies-walter-04-s.jpg", "w": 1333, "h": 2000}], "year": "2024", "summary": "Visual branding shoot with hip-hop media founder Walter Hsu at a tattoo studio and on the surrounding streets.", "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "dickies-shoot", "num": "09", "title": "Dickies Visual Branding Shoot", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Dickies", "photos": [{"src": "photos/dickies-shoot-01.jpg", "thumb": "photos/dickies-shoot-01-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-shoot-02.jpg", "thumb": "photos/dickies-shoot-02-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-shoot-03.jpg", "thumb": "photos/dickies-shoot-03-s.jpg", "w": 1333, "h": 2000}, {"src": "photos/dickies-shoot-04.jpg", "thumb": "photos/dickies-shoot-04-s.jpg", "w": 1333, "h": 2000}], "year": null, "summary": null, "results": [], "films": [], "credits": [], "press": [], "posts": []}, {"slug": "timberland-shoot", "num": "10", "title": "Timberland Visual Branding Shoot", "cat": "production", "catLabel": "Production", "roles": ["Production Management"], "client": "Timberland", "photos": [{"src": "photos/timberland-shoot-01.jpg", "thumb": "photos/timberland-shoot-01-s.jpg", "w": 1334, "h": 2000}, {"src": "photos/timberland-shoot-02.jpg", "thumb": "photos/timberland-shoot-02-s.jpg", "w": 1500, "h": 2000}, {"src": "photos/timberland-shoot-03.jpg", "thumb": "photos/timberland-shoot-03-s.jpg", "w": 1333, "h": 2000}], "year": null, "summary": null, "results": [], "films": [{"type": "file", "vertical": true, "src": "video/timberland-shoot.mp4", "poster": "photos/timberland-shoot-02-s.jpg", "title": "Timberland — Short film"}], "credits": [], "press": [], "posts": []}, {"slug": "dickies-fw25-kol", "num": "01", "title": "Dickies FW25 KOL Program", "cat": "influencer", "catLabel": "Influencer Cases", "roles": ["KOL Matchmaking", "Campaign Planning", "KOL Management", "Paid Social Seeding"], "client": "Dickies", "photos": [{"src": "photos/dickies-fw25-kol-01.jpg", "thumb": "photos/dickies-fw25-kol-01-s.jpg", "w": 1333, "h": 2000, "caption": "吉二夫婦 @je22.life — September “Road Trip”"}, {"src": "photos/dickies-fw25-kol-02.jpg", "thumb": "photos/dickies-fw25-kol-02-s.jpg", "w": 1500, "h": 2000, "caption": "哺路 BLUE @blueee0000ff — September"}, {"src": "photos/dickies-fw25-kol-03.jpg", "thumb": "photos/dickies-fw25-kol-03-s.jpg", "w": 1333, "h": 2000, "caption": "俊銘 Dobos Gu — September"}, {"src": "photos/dickies-fw25-kol-04.jpg", "thumb": "photos/dickies-fw25-kol-04-s.jpg", "w": 2000, "h": 1352, "caption": "陳紅 MIN @redbreast_4134 — September"}, {"src": "photos/dickies-fw25-kol-05.jpg", "thumb": "photos/dickies-fw25-kol-05-s.jpg", "w": 1333, "h": 2000, "caption": "Yappy @multi_yappy — October"}, {"src": "photos/dickies-fw25-kol-06.jpg", "thumb": "photos/dickies-fw25-kol-06-s.jpg", "w": 1600, "h": 2000, "caption": "同 Cody @cody.0928 — October"}, {"src": "photos/dickies-fw25-kol-07.jpg", "thumb": "photos/dickies-fw25-kol-07-s.jpg", "w": 1600, "h": 2000, "caption": "Paper @paper___official — October"}, {"src": "photos/dickies-fw25-kol-08.jpg", "thumb": "photos/dickies-fw25-kol-08-s.jpg", "w": 1334, "h": 2000, "caption": "IP Lockers Benson 小黑 @fzkbenson — October"}, {"src": "photos/dickies-fw25-kol-09.jpg", "thumb": "photos/dickies-fw25-kol-09-s.jpg", "w": 1500, "h": 2000, "caption": "JIANG JUN YOU @hellaflush1215 — October"}], "year": "2025", "summary": "A two-wave FW25 creator program for Dickies Taiwan. In September, four lifestyle creators interpreted the “Road Trip” theme in the washed-denim IKE jacket and carpenter jeans; in October, six rappers, dancers, makers and custom-bike builders styled the heavyweight duck IKE jacket and double-knee pants — each post doubling as brand-grade imagery for Dickies' own channels.", "results": [{"label": "Total reach", "value": "133,631", "note": "September “Road Trip” wave — 4 KOLs"}, {"label": "Total interactions", "value": "3,071", "note": "September wave"}, {"label": "Average engagement rate", "value": "2.30%", "note": "September wave"}, {"label": "Total impressions", "value": "1,071,915", "note": "October wave — 6 KOLs (incl. Reels)"}, {"label": "Total interactions", "value": "52,925", "note": "October wave"}, {"label": "Average engagement rate", "value": "4.94%", "note": "October wave"}, {"label": "Top creator", "value": "858,772", "note": "impressions — BR @brbrbrbrlit, October wave (Reels)"}], "films": [], "credits": [{"role": "KOL — September “Road Trip”", "handles": ["@je22.life", "@blueee0000ff", "@dobos_____gu_____", "@redbreast_4134"]}, {"role": "KOL — October", "handles": ["@brbrbrbrlit", "@multi_yappy", "@cody.0928", "@paper___official", "@fzkbenson", "@hellaflush1215"]}], "press": [], "posts": ["https://www.instagram.com/p/DOGLLSYknxJ/", "https://www.instagram.com/p/DOXrJy8E0eu/", "https://www.instagram.com/p/DOQUX2UkRfZ/", "https://www.instagram.com/p/DOxUQ1jAcjn/", "https://www.instagram.com/p/DP3vrfuEq8Y/", "https://www.instagram.com/p/DPypGnjEm6r/", "https://www.instagram.com/p/DP50aDliWFQ/", "https://www.instagram.com/p/DP6PyieD3ZC/", "https://www.instagram.com/p/DP6HKXMj_Qo/", "https://www.instagram.com/p/DP1DN7fj_U4/", "https://www.instagram.com/p/DP069lqko9b/", "https://www.instagram.com/p/DP1F40rkrZ-/"]}, {"slug": "tnf-member-day", "num": "02", "title": "The North Face Member Day — KOL & Livestream", "cat": "influencer", "catLabel": "Influencer Cases", "roles": ["KOL Matchmaking", "Content Planning", "Livestream Production"], "client": "The North Face", "photos": [{"src": "photos/tnf-member-day-02.jpg", "thumb": "photos/tnf-member-day-02-s.jpg", "w": 964, "h": 1714}, {"src": "photos/tnf-member-day-05.jpg", "thumb": "photos/tnf-member-day-05-s.jpg", "w": 665, "h": 887}], "year": "2025", "summary": "For The North Face's annual Member Day, we partnered celebrities Chang Li-Tung and Huang Mu-Yen (Piggy) on Instagram posts and stories, and had them co-host the brand's LINE Shopping livestream on October 1.", "results": [{"label": "Total Reach", "value": "54,496", "note": "Instagram posts and stories, both talents combined"}, {"label": "Total Impressions", "value": "146,847", "note": "Instagram views across all content"}, {"label": "Total Engagement", "value": "3,524", "note": "Likes, comments, shares, saves and clicks"}, {"label": "Top Post Views", "value": "72,140", "note": "Chang Li-Tung, Sep 24 Instagram post"}, {"label": "Top Post Engagement", "value": "1,723", "note": "Chang Li-Tung, Sep 24 Instagram post"}], "films": [], "credits": [], "press": [], "posts": ["https://www.instagram.com/p/DPLwmDcj6IB/", "https://www.instagram.com/p/DO-IdsHjJWI/"]}, {"slug": "sloggi-zero-feel", "num": "03", "title": "sloggi ZERO FEEL — KOL Content", "cat": "influencer", "catLabel": "Influencer Cases", "roles": ["KOL Matchmaking", "Content Planning"], "client": "sloggi", "photos": [{"src": "photos/sloggi-zero-feel-cover.svg", "thumb": "photos/sloggi-zero-feel-cover.svg", "w": 1600, "h": 2000}], "year": "2026", "summary": "KOL content seeding for the sloggi ZERO FEEL seamless series, with creators styling the collection in their everyday looks.", "results": [{"label": "KOL posts", "value": "6", "note": "Instagram posts & Reels"}], "films": [], "credits": [], "press": [], "posts": ["https://www.instagram.com/p/DdoAvxny23F/", "https://www.instagram.com/p/DdRPJpeTr_r/", "https://www.instagram.com/p/DdEXvusE3Nl/", "https://www.instagram.com/p/DcQZX8olHEF/", "https://www.instagram.com/p/DbavJ3bT5aj/", "https://www.instagram.com/p/Dbs3qBVDwrx/"]}], "services": [{"title": "Brand Event / PR", "sub": "Event planning, production management and PR for launches, pop-ups and press conferences.", "icon": "event", "filter": "event", "img": "photos/whatwedo-01.jpg"}, {"title": "Production", "sub": "MV product placement, branding films and visual branding shoots.", "icon": "prod", "filter": "production", "img": "photos/whatwedo-02.jpg"}, {"title": "Influencer Cases", "sub": "Influencer try-on events and creator-led brand moments.", "icon": "infl", "filter": "influencer", "img": "photos/whatwedo-03.jpg"}], "brands": [{"name": "HOKA", "logo": "assets/logos/hoka.svg", "mask": false}, {"name": "Red Bull", "logo": "assets/logos/redbull.png", "mask": false}, {"name": "UNIQLO", "logo": "assets/logos/uniqlo.png", "mask": false}, {"name": "Mizuno", "logo": "assets/logos/mizuno.png", "mask": false}, {"name": "Dickies", "logo": "assets/logos/dickies.png", "mask": false}, {"name": "Timberland", "logo": "assets/logos/timberland.svg", "mask": false}, {"name": "Honda", "logo": "assets/logos/honda.jpg", "mask": true}, {"name": "VANS", "logo": "assets/logos/vans.svg", "mask": false}, {"name": "Onitsuka Tiger", "logo": "assets/logos/onitsuka-tiger.png", "mask": false}, {"name": "RC", "logo": "assets/logos/rc.png", "mask": false}, {"name": "Kappa", "logo": "assets/logos/kappa.png", "mask": false}, {"name": "G-SHOCK", "logo": "assets/logos/g-shock.jpg", "mask": true}], "proof": [{"value": "50+", "label": "brand projects delivered across events, production and KOL campaigns"}, {"value": "506", "label": "news reports — Simply × Takuya Kimura press conference"}, {"value": "1,752", "label": "visitors — UNIQLO PUFFTECH pop-up"}, {"value": "2.1M+", "label": "YouTube views — Timberland placement in Trout Fresh “Suit up” MV"}]};
+</script>
+
+<script>
+(function(){
+const D = window.VYPE, P = D.projects;
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s);
+const ytThumb = id => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+function filmHTML(f, cls, tag){
+  const poster = f.type === 'youtube' ? ytThumb(f.id) : f.poster;
+  const fb = f.type === 'youtube' ? ` onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${f.id}/hqdefault.jpg'"` : '';
+  return `<div class="film ${cls||''}" data-film='${JSON.stringify(f).replace(/'/g,'&#39;')}' role="button" tabindex="0" aria-label="Play ${f.title.replace(/"/g,'')}">
+    <img src="${poster}" alt=""${fb} loading="lazy"><span class="film__play">▶</span>${tag ? `<span class="film__tag">${tag}</span>` : ''}</div>`;
+}
+function playFilm(el){
+  if (el.classList.contains('playing')) return;
+  const f = JSON.parse(el.dataset.film); el.classList.add('playing');
+  el.innerHTML = f.type === 'youtube'
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${f.id}?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="${f.title.replace(/"/g,'')}"></iframe>`
+    : `<video src="${f.src}" controls autoplay playsinline></video>`;
+}
+document.addEventListener('click', e => { const el = e.target.closest('.film'); if (el) playFilm(el); });
+document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('film')){ e.preventDefault(); playFilm(e.target); } });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- marquee + brands ---------- */
+// 品牌 LOGO：載入後自動裁掉留白與黑底，並依「面積相同」算尺寸 → 視覺大小一致
+const m = D.brands.map((b, i) => `<span class="marquee__item"><img class="marquee__logo" data-b="${i}" alt="${esc(b.name)}"></span>`).join('');
+$('#marq').innerHTML = m + m;
+$('#logos').innerHTML = D.brands.map((b, i) => `<div class="logo-tile fade" title="${esc(b.name)}"><img data-b="${i}" alt="${esc(b.name)}"></div>`).join('');
+async function trimLogo(b){
+  const img = new Image(); img.src = b.logo;
+  try { await img.decode(); } catch(e){ return null; }
+  const nw = img.naturalWidth || 400, nh = img.naturalHeight || 400, s = 800 / Math.max(nw, nh);
+  const c = document.createElement('canvas'); c.width = Math.round(nw * s); c.height = Math.round(nh * s);
+  const x = c.getContext('2d'); x.drawImage(img, 0, 0, c.width, c.height);
+  const d = x.getImageData(0, 0, c.width, c.height), p = d.data;
+  let x0 = c.width, y0 = c.height, x1 = 0, y1 = 0;
+  for (let y = 0; y < c.height; y++) for (let k = 0; k < c.width; k++){
+    const o = (y * c.width + k) * 4, lum = Math.max(p[o], p[o+1], p[o+2]);
+    if (lum < 45){ p[o+3] = 0; continue; }              // 黑底 → 透明
+    if (p[o+3] > 20){ if (k < x0) x0 = k; if (k > x1) x1 = k; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  }
+  x.putImageData(d, 0, 0);
+  if (x1 <= x0 || y1 <= y0) return null;
+  const w = x1 - x0 + 1, h = y1 - y0 + 1, o = document.createElement('canvas'); o.width = w; o.height = h;
+  o.getContext('2d').drawImage(c, x0, y0, w, h, 0, 0, w, h);
+  return { url: o.toDataURL('image/png'), ar: w / h };
+}
+(async () => {
+  const done = await Promise.all(D.brands.map(trimLogo));
+  const small = innerWidth < 720, AREA = small ? 2300 : 4600;
+  document.querySelectorAll('img[data-b]').forEach(im => {
+    const r = done[+im.dataset.b]; if (!r) return;
+    im.src = r.url;
+    if (im.classList.contains('marquee__logo')){
+      let h = Math.sqrt(AREA / r.ar), w = h * r.ar;
+      const maxW = small ? 120 : 190, maxH = small ? 44 : 70;
+      const k = Math.min(1, maxW / w, maxH / h); im.style.width = (w * k) + 'px'; im.style.height = (h * k) + 'px';
+    } else {                                              // 品牌牆：以格子百分比計
+      let w = Math.sqrt(1500 * r.ar), h = w / r.ar;
+      const k = Math.min(1, 78 / w, 60 / h); im.style.width = (w * k) + '%'; im.style.height = (h * k) + '%';
+    }
+  });
+})();
+
+/* ---------- services ---------- */
+const K = '#141414';
+const ICONS = {
+  // Brand Event：聚光燈下的派對星星
+  event: `<svg viewBox="0 0 100 100"><g filter="url(#crayon)">
+    <path d="M8 14 Q50 4 92 12 Q97 52 90 92 Q48 97 10 90 Q3 50 8 14Z" fill="#ff5a1f"/>
+    <path d="M50 16 L59 40 L85 42 L64 58 L72 84 L50 69 L28 84 L36 58 L15 42 L41 40Z" fill="#ffc21a" stroke="${K}" stroke-width="3.5" stroke-linejoin="round"/>
+    <circle cx="44" cy="46" r="3.2" fill="${K}"/><circle cx="57" cy="46" r="3.2" fill="${K}"/>
+    <path d="M44 55 Q50 60 57 55" fill="none" stroke="${K}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M18 22 l6 4 M80 20 l-5 6 M84 74 l-7 -3 M14 70 l7 -2" stroke="#fff6e5" stroke-width="4" stroke-linecap="round"/>
+  </g></svg>`,
+  // Production：手繪攝影機
+  prod: `<svg viewBox="0 0 100 100"><g filter="url(#crayon)">
+    <path d="M6 12 Q50 5 94 13 Q96 50 91 91 Q50 96 9 90 Q4 52 6 12Z" fill="#1e4bd2"/>
+    <rect x="16" y="36" width="50" height="38" rx="7" fill="#ffc21a" stroke="${K}" stroke-width="3.5"/>
+    <path d="M66 48 L86 38 L86 72 L66 62Z" fill="#ff7a8a" stroke="${K}" stroke-width="3.5" stroke-linejoin="round"/>
+    <circle cx="30" cy="27" r="10" fill="#fff6e5" stroke="${K}" stroke-width="3.5"/><circle cx="52" cy="27" r="10" fill="#fff6e5" stroke="${K}" stroke-width="3.5"/>
+    <circle cx="30" cy="27" r="3" fill="${K}"/><circle cx="52" cy="27" r="3" fill="${K}"/>
+    <circle cx="27" cy="46" r="4.5" fill="#ff3b1f"/>
+    <path d="M28 64 h26" stroke="${K}" stroke-width="3" stroke-linecap="round"/>
+  </g></svg>`,
+  // Influencer Cases：戴帽子的人物＋手機
+  infl: `<svg viewBox="0 0 100 100"><g filter="url(#crayon)">
+    <path d="M9 10 Q52 4 93 12 Q97 50 91 92 Q50 97 8 91 Q3 50 9 10Z" fill="#ffc21a"/>
+    <path d="M22 96 Q24 70 50 68 Q76 70 78 96Z" fill="#3aa655" stroke="${K}" stroke-width="3.5"/>
+    <path d="M36 44 Q36 66 50 66 Q64 66 64 44 Q64 30 50 30 Q36 30 36 44Z" fill="#ff8a8a" stroke="${K}" stroke-width="3.5"/>
+    <path d="M33 36 Q34 18 52 18 Q68 19 68 34 Q52 30 33 36Z" fill="#1e4bd2" stroke="${K}" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M66 33 Q80 33 84 38 Q74 40 64 38" fill="#1e4bd2" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="44" cy="46" r="2.8" fill="${K}"/><circle cx="56" cy="46" r="2.8" fill="${K}"/>
+    <circle cx="40" cy="54" r="3.5" fill="#ff3b1f" opacity=".8"/><circle cx="60" cy="54" r="3.5" fill="#ff3b1f" opacity=".8"/>
+    <rect x="68" y="56" width="16" height="26" rx="3" fill="${K}" stroke="${K}" stroke-width="2"/><rect x="71" y="60" width="10" height="16" fill="#fff6e5"/>
+    <path d="M74 66 q2 -3 4 0 q2 3 -4 6 q-6 -3 -4 -6 q2 -3 4 0" fill="#ff3b1f"/>
+  </g></svg>`
+};
+$('#services').innerHTML = D.services.map((s,i) => `
+  <a class="service fade" href="#index" data-filter="${s.filter}">
+    <span class="mono dim">0${i+1} / 03</span>
+    <div class="service__top"><span class="crayon">${ICONS[s.icon]}</span><h3 class="service__title">${esc(s.title)}</h3></div>
+    <p class="service__sub">${esc(s.sub)}</p>
+    <div class="service__img"><img src="${s.img}" alt="${esc(s.title)}" loading="lazy"></div>
+  </a>`).join('');
+document.querySelectorAll('.service').forEach(el => el.addEventListener('click', () => setFilter(P.some(p => p.cat === el.dataset.filter) ? el.dataset.filter : 'all')));
+
+/* ---------- index grid ---------- */
+const CATS = [['all','All','','All'],['event','Brand Event','event','Event'],['production','Production','prod','Production'],['influencer','Influencer','infl','Influencer']]
+  .filter(([k]) => k === 'all' || P.some(p => p.cat === k)); // 沒有專案的分類先不顯示
+$('#filters').innerHTML = CATS.map(([k,l,ic,s]) => `<button data-k="${k}">${ic ? `<span class="ic">${ICONS[ic]}</span>` : '<span class="ic all">✦</span>'}<span class="lbl-long">${l}</span><span class="lbl-short">${s}</span></button>`).join('');
+$('#grid').innerHTML = P.map((p,i) => `
+  <article class="card fade" data-cat="${p.cat}" data-i="${i}" data-ar="${(p.photos[0].w/p.photos[0].h).toFixed(4)}">
+    <div class="card__img" style="aspect-ratio:${p.photos[0].w}/${p.photos[0].h}">${p.films && p.films.length ? '<span class="badge-film">▶ FILM</span>' : ''}<img src="${p.photos[0].src}" decoding="async" alt="${esc(p.title)}" loading="lazy"><span class="open">↗</span></div>
+    <div class="card__meta"><span class="mono dim">${esc(p.catLabel)} / ${p.num}</span><span class="mono dim">${p.photos.length} photos</span></div>
+    <h3 class="card__title">${esc(p.title)}</h3>
+  </article>`).join('');
+/* 等高不裁切排版：每列同高、照片原比例；最後一列沿用上一列高度，不硬撐滿 */
+function justify(box, target, gap){
+  const items = [...box.children].filter(el => !el.hidden && el.dataset.ar);
+  const W = box.clientWidth; if (!W) return;
+  if (innerWidth < 720){ items.forEach(el => { el.style.width = W + 'px'; const im = el.querySelector('.card__img') || el; im.style.height = (W / el.dataset.ar) + 'px'; }); return; }
+  let row = [], sum = 0, lastH = target;
+  const place = (row, h) => row.forEach(el => { el.style.width = (h * el.dataset.ar) + 'px'; const im = el.querySelector('.card__img') || el; im.style.height = h + 'px'; });
+  items.forEach(el => {
+    row.push(el); sum += +el.dataset.ar;
+    const h = (W - gap * (row.length - 1)) / sum;
+    if (h <= target){ place(row, h); lastH = h; row = []; sum = 0; }
+  });
+  if (row.length) place(row, Math.min(target, lastH));
+}
+const layoutGrid = () => justify($('#grid'), 400, 20);
+addEventListener('resize', () => { layoutGrid(); const g = document.querySelector('.proj__gallery'); if (g) justify(g, 440, 14); });
+function setFilter(k){
+  document.querySelectorAll('#filters button').forEach(b => b.classList.toggle('active', b.dataset.k === k));
+  document.querySelectorAll('.card').forEach(c => c.hidden = !(k === 'all' || c.dataset.cat === k));
+  layoutGrid();
+}
+document.querySelectorAll('#filters button').forEach(b => b.onclick = () => setFilter(b.dataset.k));
+setFilter('all');
+document.querySelectorAll('.card').forEach(c => c.onclick = () => openProj(+c.dataset.i));
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+/* ---------- project overlay (hash: #work/slug) ---------- */
+const ov = $('#proj'), body = $('#proj-body');
+let cur = -1, lastScroll = 0;
+function render(i){
+  const p = P[i], prev = P[(i-1+P.length)%P.length], next = P[(i+1)%P.length];
+  const films = p.films || [], lead = films.find(f => !f.vertical), rest = films.filter(f => f !== lead);
+  $('#proj-crumb').textContent = `${p.catLabel} / ${p.num}`;
+  const gal = p.photos.slice(p.films && p.films.some(f => !f.vertical) ? 0 : 1).map((ph,k) => {
+    const ar = ph.w / ph.h;
+    return `<figure data-ar="${ar.toFixed(4)}"><img src="${ph.src}" width="${ph.w}" height="${ph.h}" alt="${esc(ph.caption || p.title)}" loading="lazy">${ph.caption ? `<figcaption>${esc(ph.caption)}</figcaption>` : ''}</figure>`;
+  }).join('');
+  body.innerHTML = `
+    ${lead ? filmHTML(lead, 'proj__cover', '▶ ' + esc(lead.title)) : `<div class="proj__cover"><img src="${p.photos[0].src}" alt="${esc(p.title)}"></div>`}
+    <div class="proj__head">
+      <div class="proj__num">${p.num}</div>
+      <h2 class="proj__title">${esc(p.title)}</h2>
+      <div class="proj__info">
+        <div><h6>Category</h6><p>${esc(p.catLabel)}</p></div>
+        <div><h6>Role</h6>${p.roles.map(r => `<span class="tag">${esc(r)}</span>`).join('')}</div>
+        <div><h6>Client${p.year ? ' / Year' : ''}</h6><p>${esc(p.client)}${p.year ? ' — ' + esc(p.year) : ''}</p></div>
+      </div>
+      ${p.summary ? `<p class="proj__summary">${esc(p.summary)}</p>` : ''}
+    </div>
+    ${p.results && p.results.length ? `<section class="proj__sec"><h4>+ Results</h4><div class="stats">${p.results.map(r =>
+      `<div class="stat"><div class="stat__v">${esc(r.value)}</div><div class="stat__l">${esc(r.label)}</div>${r.note ? `<div class="stat__n dim">${esc(r.note)}</div>` : ''}</div>`).join('')}</div></section>` : ''}
+    ${rest.length ? `<section class="proj__sec"><h4>+ Films</h4><div class="films">${rest.map(f =>
+      `<figure>${filmHTML(f, f.vertical ? 'v' : '')}<figcaption>${esc(f.title)}</figcaption></figure>`).join('')}</div></section>` : ''}
+    <div class="proj__gallery">${gal}</div>
+    ${p.posts && p.posts.length ? `<section class="proj__sec"><h4>+ Posts — ${p.posts.length}</h4><div class="posts">${p.posts.slice(0, 6).map(u =>
+      `<blockquote class="instagram-media" data-instgrm-permalink="${u}" data-instgrm-version="14"><a class="ig-fallback" href="${u}" target="_blank" rel="noopener"><span class="mono">View post on Instagram</span><span>↗</span></a></blockquote>`).join('')}</div>
+      ${p.posts.length > 6 ? `<ul class="press" style="margin-top:24px">${p.posts.slice(6).map((u, k) =>
+        `<li><a href="${u}" target="_blank" rel="noopener"><span class="o">Post ${String(k + 7).padStart(2, '0')}</span><span class="ty dim">${esc((u.match(/instagram\.com\/([^/]+)\/(?:p|reel)\//) || [,'Instagram'])[1])}</span><span>↗</span></a></li>`).join('')}</ul>` : ''}</section>` : ''}
+    ${p.credits && p.credits.length ? `<section class="proj__sec"><h4>+ Credits</h4><div class="credits">${p.credits.map(c =>
+      `<div><span class="mono dim">${esc(c.role)}</span><span>${c.handles.map(h => `<a href="https://www.instagram.com/${h}/" target="_blank" rel="noopener">@${esc(h)}</a>`).join(' ')}</span></div>`).join('')}</div></section>` : ''}
+    ${p.press && p.press.length ? `<section class="proj__sec" style="padding-bottom:24px"><h4>+ Media Coverage — ${p.press.length} placements</h4><ul class="press">${p.press.map(m =>
+      `<li><a href="${m.url}" target="_blank" rel="noopener"><span class="o">${esc(m.outlet)}</span><span class="ty dim">${esc(m.type)}</span><span>↗</span></a></li>`).join('')}</ul></section>` : ''}
+    <div class="proj__nav">
+      <button data-go="${(i-1+P.length)%P.length}"><span class="mono dim">← Prev</span><div class="t">${esc(prev.title)}</div></button>
+      <button data-go="${(i+1)%P.length}"><span class="mono dim">Next →</span><div class="t">${esc(next.title)}</div></button>
+    </div>`;
+  body.querySelectorAll('[data-go]').forEach(b => b.onclick = () => openProj(+b.dataset.go));
+  requestAnimationFrame(() => justify(body.querySelector('.proj__gallery'), 440, 14));
+  if (p.posts && p.posts.length) loadIG();
+}
+// Instagram 官方嵌入：只在有貼文的專案頁才載入 embed.js
+function loadIG(){
+  if (window.instgrm){ window.instgrm.Embeds.process(); return; }
+  if (document.getElementById('ig-embed')) return;
+  const s = document.createElement('script'); s.id = 'ig-embed'; s.async = true; s.src = 'https://www.instagram.com/embed.js';
+  s.onload = () => window.instgrm && window.instgrm.Embeds.process();
+  document.body.appendChild(s);
+}
+function openProj(i){ location.hash = 'work/' + P[i].slug; }
+function closeProj(){ history.pushState('', document.title, location.pathname + location.search); route(); }
+function route(){
+  const mm = location.hash.match(/^#work\/(.+)$/);
+  const i = mm ? P.findIndex(p => p.slug === mm[1]) : -1;
+  if (i >= 0){
+    if (cur < 0) lastScroll = scrollY;
+    cur = i; render(i); ov.scrollTop = 0; ov.dataset.cat = P[i].cat;
+    ov.classList.add('open'); document.body.classList.add('lock');
+    document.title = P[i].title + ' — VYPE CREATIVE';
+  } else if (cur >= 0){
+    cur = -1; ov.classList.remove('open'); document.body.classList.remove('lock');
+    document.title = 'VYPE CREATIVE — Good vibe + Hype';
+  }
+}
+$('#proj-close').onclick = closeProj;
+addEventListener('keydown', e => {
+  if (cur < 0) return;
+  if (e.key === 'Escape') closeProj();
+  if (e.key === 'ArrowRight') openProj((cur+1)%P.length);
+  if (e.key === 'ArrowLeft') openProj((cur-1+P.length)%P.length);
+});
+addEventListener('hashchange', route);
+route();
+
+/* ---------- visibility helper: run loops only on screen ---------- */
+function onScreen(el, cb){
+  new IntersectionObserver(es => cb(es[0].isIntersecting), {rootMargin:'100px'}).observe(el);
+}
+
+/* ================= ROUND CAROUSEL ================= */
+(function(){
+  const root = $('#rc'), ring = $('#ring');
+  const n = P.length, GAP = 18;
+  let H, R, C;
+  function size(){
+    H = innerWidth < 720 ? 230 : 340;
+    ring.style.setProperty('--ch', H + 'px');
+    const ws = P.map(p => Math.round(H * p.photos[0].w / p.photos[0].h));
+    C = ws.reduce((a, w) => a + w + GAP, 0); R = C / (2 * Math.PI);
+    let acc = 0;
+    ring.querySelectorAll('.rc__card').forEach((c, i) => {
+      const w = ws[i], a = (acc + w / 2) / C * 360; acc += w + GAP;
+      c.style.width = w + 'px'; c.style.marginLeft = (-w / 2) + 'px';
+      c.style.transform = `rotateY(${a}deg) translateZ(${R}px)`;
+    });
+  }
+  ring.innerHTML = P.map((p,i) => `
+    <div class="rc__card" data-i="${i}" data-cat="${p.cat}">
+      <div class="rc__face rc__face--front" style="background-image:url('${p.photos[0].thumb}')">
+        <div class="rc__label"><div class="mono">${esc(p.catLabel)} / ${p.num}</div><div class="t">${esc(p.title)}</div></div>
+      </div>
+      <div class="rc__face rc__face--back" style="background-image:url('${p.photos[0].thumb}')"></div>
+    </div>`).join('');
+  $('#rc-count').textContent = String(n).padStart(2,'0') + ' Projects';
+  size(); addEventListener('resize', size);
+
+  const degPerSec = RM ? 0 : -7 * 6 * 0.35 * 0.25; // 反方向、0.5 倍速；想快就自己拖
+  let rot = 0, vel = 0, last = 0, raf = 0, visible = false;
+  let drag = {on:false, x:0, y:0, moved:0, id:null, axis:null};
+  function tick(now){
+    raf = requestAnimationFrame(tick);
+    const f = Math.min(last ? (now - last) / 1000 : 0, 0.1); last = now;
+    if (!drag.on){ if (Math.abs(vel) > 0.5){ rot += vel * f; vel *= 0.94; } else rot += degPerSec * f; }
+    ring.style.transform = `translateZ(${-R}px) rotateY(${rot}deg)`;
+  }
+  function start(){ if (!raf){ last = 0; raf = requestAnimationFrame(tick); } }
+  function stop(){ cancelAnimationFrame(raf); raf = 0; }
+  onScreen(root, v => { visible = v; v && !document.hidden ? start() : stop(); });
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : visible && start());
+  ring.style.transform = `translateZ(${-R}px) rotateY(0deg)`;
+
+  root.addEventListener('pointerdown', e => { drag = {on:true, x:e.clientX, y:e.clientY, moved:0, id:e.pointerId, axis:null}; vel = 0; });
+  root.addEventListener('pointermove', e => {
+    if (!drag.on) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.axis && (Math.abs(dx) > 4 || Math.abs(dy) > 4)){
+      drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      if (drag.axis === 'x'){ root.setPointerCapture(drag.id); root.classList.add('dragging'); }
+      else { drag.on = false; return; }
+    }
+    if (drag.axis !== 'x') return;
+    drag.x = e.clientX; drag.y = e.clientY; drag.moved += Math.abs(dx);
+    const d = dx * (360 / C) * 1.1; rot += d; vel = d * 60;
+  });
+  function end(e){
+    if (!drag.on) return;
+    const wasClick = drag.moved < 6 && drag.axis !== 'x';
+    drag.on = false; root.classList.remove('dragging');
+    if (wasClick){
+      const t = document.elementFromPoint(e.clientX, e.clientY);
+      const card = t && t.closest('.rc__card');
+      if (card) openProj(+card.dataset.i);
+    }
+  }
+  root.addEventListener('pointerup', end);
+  root.addEventListener('pointercancel', () => { drag.on = false; root.classList.remove('dragging'); });
+})();
+
+/* footer art video: play only while visible */
+(function(){ const v = document.querySelector('.footer__art video'); if (!v || RM) return;
+  onScreen(v, on => on ? v.play().catch(()=>{}) : v.pause()); })();
+
+/* ================= BUTTER INTERSTITIAL (VYPE logo) — 參考 awwwards Footer Butter ================= */
+// 重點：拖影長度跟著捲動速度「拉長、再彈回」；近處清楚、遠處越來越糊；依深度連續上色並隨時間流動
+(function(){
+  const sec = $('#butter'), stage = $('#butter-stage');
+  // 四個 good vibe 情境隨時間輪流交疊：森林 → 陽光 → 海洋 → 粉紅泡泡
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  // Good vibe 色系：綠＝草地森林植物、橘＝太陽溫暖、藍＝海洋天空、粉＝粉紅泡泡戀愛感
+  const GRASS = '#8be36a', LEAF = '#5cd17a', FERN = '#3fbf8f';          // 綠
+  const SUN = '#ffc247', WARM = '#ff8f3f', GLOW = '#ffd98a';            // 橘
+  const OCEAN = '#2fa8e6', SKY = '#8fd6ff', SEA = '#3ccacb';            // 藍
+  const BUBBLE = '#ffa6cf', LOVE = '#ff7aae';                            // 粉
+  const SCENES = [
+    [GRASS, LEAF, FERN, SKY, GRASS],          // 森林
+    [SUN, WARM, GLOW, GRASS, SUN],            // 陽光
+    [OCEAN, SKY, SEA, SUN, OCEAN],            // 海洋
+    [BUBBLE, SKY, LOVE, GLOW, BUBBLE],        // 粉紅泡泡
+  ].map(s => s.map(hex));
+  const colorAt = (stops, u) => { const L = [...stops, stops[0]], x = u * (L.length - 1), i = Math.min(L.length - 2, Math.floor(x)), k = x - i; return L[i].map((c, j) => Math.round(c + (L[i + 1][j] - c) * k)); };
+  const SCENE_SEC = 6;                      // 每個場景約 6 秒，交疊漸變
+  // 三層畫布：近（清楚）、中（微糊）、遠（很糊）→ 便宜地做出「越遠越糊」
+  stage.innerHTML = `<canvas class="butter__trail b2"></canvas><canvas class="butter__trail b1"></canvas><canvas class="butter__trail b0"></canvas><img class="butter__top" src="assets/vype-logo-white.png" alt="VYPE Creative">`;
+  const cvs = [...stage.querySelectorAll('canvas')].reverse();   // [near, mid, far]
+  const ctxs = cvs.map(c => c.getContext('2d'));
+  const logo = new Image(); logo.src = 'assets/vype-logo-white.png';
+  const NC = 20, N = 44, MAXL = 1.1;       // 每場景色票數、層數、最大拉長（倍 LOGO 高）
+  let W = 0, H = 0, sprites = [], ready = false, raf = 0, lastY = scrollY, vel = 0, len = 0;
+  function prepare(){
+    if (!logo.complete || !logo.naturalWidth) return;
+    W = stage.clientWidth; H = stage.clientHeight;
+    const dpr = 1, CH = H * (1 + MAXL);       // 拖影本來就糊，用 1x 省記憶體
+    cvs.forEach((c, k) => { c.width = Math.round(W * dpr); c.height = Math.round(CH * dpr); c.style.height = CH + 'px'; ctxs[k].setTransform(dpr, 0, 0, dpr, 0, 0); });
+    sprites = SCENES.map(stops => {
+      const arr = [];
+      for (let k = 0; k < NC; k++){
+        const s = document.createElement('canvas'); s.width = Math.round(W); s.height = Math.round(H);
+        const sc = s.getContext('2d'); sc.drawImage(logo, 0, 0, s.width, s.height);
+        sc.globalCompositeOperation = 'source-in'; const [r, g, b] = colorAt(stops, k / NC);
+        sc.fillStyle = `rgb(${r},${g},${b})`; sc.fillRect(0, 0, s.width, s.height);
+        arr.push(s);
+      }
+      return arr;
+    });
+    ready = true;
+  }
+  logo.onload = prepare; addEventListener('resize', prepare);
+  const ease = x => 1 - Math.pow(1 - x, 3);
+  function frame(now){
+    raf = requestAnimationFrame(frame);
+    if (!ready) return;
+    const r = sec.getBoundingClientRect();
+    const p = RM ? 1 : Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * 1.05)));
+    const e = ease(p), rise = (1 - e) * innerHeight * .3;
+    // 捲動速度 → 拖影拉長；停下來後彈回短短一截（像奶油被拉開）
+    const dy = Math.abs(scrollY - lastY); lastY = scrollY;
+    vel += (Math.min(dy, 120) - vel) * (dy > vel ? .2 : .06);   // 速度感慢慢退
+    const rest = H * .16, target = RM ? rest : rest + Math.min(H * (MAXL - .16), vel * H * .03);
+    len += (target - len) * (target > len ? .18 : .022);      // 拉長稍快、彈回很慢（約 2 秒）
+    const phase = RM ? 0 : now / 14000;
+    const st = RM ? 0 : now / 1000 / SCENE_SEC, sa = Math.floor(st) % SCENES.length, sb = (sa + 1) % SCENES.length;
+    const f = st - Math.floor(st), mix = f < .6 ? 0 : (f - .6) / .4;   // 每場景停留後，最後 40% 交疊到下一個
+    ctxs.forEach(c => c.clearRect(0, 0, W, H * (1 + MAXL)));
+    for (let i = N; i >= 1; i--){
+      const t = i / N, y = 2 + t * len;
+      const u = ((t * .8 - phase) % 1 + 1) % 1;
+      const c = t < .22 ? ctxs[0] : t < .55 ? ctxs[1] : ctxs[2];
+      const a = Math.min(1, e * 1.5) * (Math.pow(1 - t, 1.2) * .9 + .06), idx = Math.floor(u * NC) % NC;
+      if (mix < 1){ c.globalAlpha = a * (1 - mix); c.drawImage(sprites[sa][idx], 0, y, W, H); }
+      if (mix > 0){ c.globalAlpha = a * mix; c.drawImage(sprites[sb][idx], 0, y, W, H); }
+    }
+    ctxs.forEach(c => c.globalAlpha = 1);
+    cvs.forEach(c => c.style.transform = `translateY(${rise}px)`);
+    stage.querySelector('.butter__top').style.transform = `translateY(${rise}px)`;
+  }
+  onScreen(sec, v => { if (v && !raf) raf = requestAnimationFrame(frame); if (!v){ cancelAnimationFrame(raf); raf = 0; } });
+  $('#proof-stats').innerHTML = D.proof.map(s => `<div><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join('');
+  new IntersectionObserver(es => es.forEach(e => e.isIntersecting && $('#butter-proof').classList.add('in')), {threshold:.6}).observe(sec.querySelector('.butter__sticky'));
+})();
+
+/* ================= REFLECT SHADER (hero) ================= */
+(function(){
+  const host = $('#reflect'), cv = document.createElement('canvas'); host.appendChild(cv);
+  const gl = cv.getContext('webgl', {alpha:true, premultipliedAlpha:true, antialias:false});
+  if (!gl){ host.style.background = 'radial-gradient(ellipse at 50% 40%, #1d2a10, #0a0a0a 70%)'; return; }
+  const VS = 'attribute vec2 aPos;void main(){gl_Position=vec4(aPos,0.,1.);}';
+  const FS = `precision highp float;
+  #define MAXLINES 12
+  uniform vec2 uResolution;uniform float uTime,uLineWidth,uSpread,uBands,uScale,uIntensity;
+  uniform int uLineCount;uniform vec3 uTint;uniform vec2 uPointer;uniform float uHover,uReach;
+  float channel(vec2 uv,float r,float t,float jf){
+    float sum=0.;float band=mod(uv.x+uv.y,uBands);
+    for(int i=0;i<MAXLINES;i++){ if(i<uLineCount){
+      float d=fract(t-uSpread*jf+float(i)*0.01)*5.0-r+band;
+      sum+=uLineWidth*float(i*i)/max(abs(d),1e-4);} }
+    return sum;}
+  void main(){
+    vec2 s=(gl_FragCoord.xy*2.0-uResolution)/min(uResolution.x,uResolution.y);s*=uScale;
+    vec2 uv=s-uPointer*min(uHover,1.0);
+    float reach=max(uReach,1e-3),r=length(uv),t=uTime*0.05;
+    vec3 color=vec3(channel(uv,r,t,0.),channel(uv,r,t,1.),channel(uv,r,t,2.));
+    float dp=length(s-uPointer)/reach,glow=uHover*exp(-dp*dp);
+    vec3 c=min(color*uIntensity*(1.0+glow)*uTint,vec3(1.0));
+    gl_FragColor=vec4(c,clamp(max(max(c.r,c.g),c.b),0.,1.));}`;
+  function sh(t,s){ const o = gl.createShader(t); gl.shaderSource(o,s); gl.compileShader(o); return o; }
+  const pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER,VS)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)){ host.style.background = '#0a0a0a'; return; }
+  gl.useProgram(pr);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+  const a = gl.getAttribLocation(pr,'aPos'); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+  const U = n => gl.getUniformLocation(pr, n);
+  const u = {res:U('uResolution'),time:U('uTime'),lw:U('uLineWidth'),spread:U('uSpread'),bands:U('uBands'),scale:U('uScale'),
+    inten:U('uIntensity'),count:U('uLineCount'),tint:U('uTint'),ptr:U('uPointer'),hover:U('uHover'),reach:U('uReach')};
+  // base preset: speed 50, brightness 100, thickness 20, chromatic 10, bandGap 20, zoom 295, hover 90
+  const ZOOM = 2.95, SPEED = 50, HOVER = .9;
+  gl.uniform1f(u.lw, 20/10000); gl.uniform1f(u.spread, 10/1000); gl.uniform1f(u.bands, .2);
+  gl.uniform1f(u.scale, ZOOM); gl.uniform1f(u.inten, 1); gl.uniform1i(u.count, 5); gl.uniform3f(u.tint, 1, 1, 1);
+  let w = 0, h = 0, t = 0, prev = 0, raf = 0, visible = false;
+  const p = {x:0,y:0,tx:0,ty:0,ease:0,te:0};
+  function resize(){
+    const dpr = Math.min(devicePixelRatio || 1, innerWidth < 720 ? 1 : 1.5);
+    w = Math.max(1, Math.round(host.clientWidth * dpr)); h = Math.max(1, Math.round(host.clientHeight * dpr));
+    cv.width = w; cv.height = h; gl.viewport(0,0,w,h); gl.uniform2f(u.res, w, h);
+  }
+  resize(); new ResizeObserver(resize).observe(host);
+  const hero = $('#hero');
+  hero.addEventListener('pointermove', e => {
+    const r = host.getBoundingClientRect(), mn = Math.min(r.width, r.height);
+    p.tx = ((e.clientX - r.left) * 2 - r.width) / mn; p.ty = (r.height - (e.clientY - r.top) * 2) / mn; p.te = 1;
+  });
+  hero.addEventListener('pointerleave', () => { p.tx = 0; p.ty = 0; p.te = 0; });
+  function frame(now){
+    raf = requestAnimationFrame(frame);
+    const dt = Math.min(prev ? (now - prev) / 1000 : 0, 1/15); prev = now;
+    t = (t + 3 * (SPEED/50) * dt) % 20000;
+    const k = 1 - Math.exp(-dt * 8);
+    p.x += (p.tx - p.x) * k; p.y += (p.ty - p.y) * k; p.ease += (p.te - p.ease) * k;
+    gl.uniform1f(u.time, t);
+    gl.uniform2f(u.ptr, p.x * ZOOM, p.y * ZOOM);
+    gl.uniform1f(u.hover, HOVER * p.ease);
+    gl.uniform1f(u.reach, (260 * 2 / Math.min(host.clientWidth, host.clientHeight)) * ZOOM);
+    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    if (RM){ cancelAnimationFrame(raf); raf = 0; }
+  }
+  function start(){ if (!raf){ prev = 0; raf = requestAnimationFrame(frame); } }
+  function stop(){ cancelAnimationFrame(raf); raf = 0; }
+  if (RM) t = 40;
+  onScreen(host, v => { visible = v; v && !document.hidden ? start() : stop(); });
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : visible && start());
+})();
+
+})();
+</script>
+</body>
+</html>
