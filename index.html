@@ -22,7 +22,8 @@
   --bg:#0a0a0a; --fg:#f4f4f0; --fg-dim:#8a8a85; --rule:rgba(244,244,240,.18);
   --accent:#b6f23a; --page-pad:clamp(16px,4vw,56px);
   /* good vibe 分類色：活動＝陽光、製作＝海洋、網紅＝粉紅泡泡 */
-  --c-event:#ffc247; --c-production:#8fd6ff; --c-influencer:#ffa6cf;
+  --c-event:#b54a1b; --c-production:#05367a; --c-influencer:#ffa6cf;          /* 填色：Ambergallop／Cobaltveil */
+  --c-event-ink:#e2773f; --c-production-ink:#6f9ae6; --c-influencer-ink:#ffa6cf; /* 黑底上的文字用同色系提亮版 */
   --ease:cubic-bezier(.65,0,.35,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -282,23 +283,25 @@ img{display:block;max-width:100%}
 @media (min-width:721px){.filter-bar .lbl-short{display:none}}
 
 /* ---- good vibe category colours ---- */
-[data-cat="event"]{--cat:var(--c-event)}
-[data-cat="production"]{--cat:var(--c-production)}
-[data-cat="influencer"]{--cat:var(--c-influencer)}
+[data-cat="event"]{--cat:var(--c-event-ink);--cat-fill:var(--c-event)}
+[data-cat="production"]{--cat:var(--c-production-ink);--cat-fill:var(--c-production)}
+[data-cat="influencer"]{--cat:var(--c-influencer-ink);--cat-fill:var(--c-influencer)}
 .card .card__meta .mono:first-child{color:var(--cat,var(--fg-dim))}
-.card__img .open{background:var(--cat,var(--accent))}
+.card__img .open{background:var(--cat-fill,var(--accent));color:#f4f4f0}
+[data-cat="influencer"] .card__img .open{color:#0a0a0a}
 .rc__card .rc__label .mono{color:var(--cat,var(--accent))}
 .proj .proj__num{color:var(--cat,var(--accent))}
 .proj .stat__v{color:var(--cat,var(--accent))}
 .proj #proj-crumb{color:var(--cat,var(--fg))}
-.proj .tag{border-color:color-mix(in oklab,var(--cat,var(--rule)) 55%,transparent)}
-.proj .film__play{background:var(--cat,var(--accent))}
-.filter-bar button[data-k="event"].active{background:var(--c-event);border-color:var(--c-event)}
-.filter-bar button[data-k="production"].active{background:var(--c-production);border-color:var(--c-production)}
+.proj .tag{border-color:var(--cat-fill,var(--rule))}
+.proj .film__play{background:var(--cat-fill,var(--accent));color:#f4f4f0}
+.proj[data-cat="influencer"] .film__play{color:#0a0a0a}
+.filter-bar button[data-k="event"].active{background:var(--c-event);border-color:var(--c-event);color:#f4f4f0}
+.filter-bar button[data-k="production"].active{background:var(--c-production);border-color:var(--c-production);color:#f4f4f0}
 .filter-bar button[data-k="influencer"].active{background:var(--c-influencer);border-color:var(--c-influencer)}
-.service[data-filter="event"]{--cat:var(--c-event)}
-.service[data-filter="production"]{--cat:var(--c-production)}
-.service[data-filter="influencer"]{--cat:var(--c-influencer)}
+.service[data-filter="event"]{--cat:var(--c-event-ink)}
+.service[data-filter="production"]{--cat:var(--c-production-ink)}
+.service[data-filter="influencer"]{--cat:var(--c-influencer-ink)}
 .service .mono.dim{color:var(--cat)}
 .service:hover .service__title{color:var(--cat)}
 .service__title{transition:color .4s}
@@ -562,7 +565,7 @@ const K = '#141414';
 const ICONS = {
   // Brand Event：聚光燈下的派對星星
   event: `<svg viewBox="0 0 100 100"><g filter="url(#crayon)">
-    <path d="M8 14 Q50 4 92 12 Q97 52 90 92 Q48 97 10 90 Q3 50 8 14Z" fill="#ff5a1f"/>
+    <path d="M8 14 Q50 4 92 12 Q97 52 90 92 Q48 97 10 90 Q3 50 8 14Z" fill="#b54a1b"/>
     <path d="M50 16 L59 40 L85 42 L64 58 L72 84 L50 69 L28 84 L36 58 L15 42 L41 40Z" fill="#ffc21a" stroke="${K}" stroke-width="3.5" stroke-linejoin="round"/>
     <circle cx="44" cy="46" r="3.2" fill="${K}"/><circle cx="57" cy="46" r="3.2" fill="${K}"/>
     <path d="M44 55 Q50 60 57 55" fill="none" stroke="${K}" stroke-width="3" stroke-linecap="round"/>
@@ -570,7 +573,7 @@ const ICONS = {
   </g></svg>`,
   // Production：手繪攝影機
   prod: `<svg viewBox="0 0 100 100"><g filter="url(#crayon)">
-    <path d="M6 12 Q50 5 94 13 Q96 50 91 91 Q50 96 9 90 Q4 52 6 12Z" fill="#1e4bd2"/>
+    <path d="M6 12 Q50 5 94 13 Q96 50 91 91 Q50 96 9 90 Q4 52 6 12Z" fill="#05367a"/>
     <rect x="16" y="36" width="50" height="38" rx="7" fill="#ffc21a" stroke="${K}" stroke-width="3.5"/>
     <path d="M66 48 L86 38 L86 72 L66 62Z" fill="#ff7a8a" stroke="${K}" stroke-width="3.5" stroke-linejoin="round"/>
     <circle cx="30" cy="27" r="10" fill="#fff6e5" stroke="${K}" stroke-width="3.5"/><circle cx="52" cy="27" r="10" fill="#fff6e5" stroke="${K}" stroke-width="3.5"/>
@@ -583,8 +586,8 @@ const ICONS = {
     <path d="M9 10 Q52 4 93 12 Q97 50 91 92 Q50 97 8 91 Q3 50 9 10Z" fill="#ffc21a"/>
     <path d="M22 96 Q24 70 50 68 Q76 70 78 96Z" fill="#3aa655" stroke="${K}" stroke-width="3.5"/>
     <path d="M36 44 Q36 66 50 66 Q64 66 64 44 Q64 30 50 30 Q36 30 36 44Z" fill="#ff8a8a" stroke="${K}" stroke-width="3.5"/>
-    <path d="M33 36 Q34 18 52 18 Q68 19 68 34 Q52 30 33 36Z" fill="#1e4bd2" stroke="${K}" stroke-width="3.5" stroke-linejoin="round"/>
-    <path d="M66 33 Q80 33 84 38 Q74 40 64 38" fill="#1e4bd2" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M33 36 Q34 18 52 18 Q68 19 68 34 Q52 30 33 36Z" fill="#05367a" stroke="${K}" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M66 33 Q80 33 84 38 Q74 40 64 38" fill="#05367a" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
     <circle cx="44" cy="46" r="2.8" fill="${K}"/><circle cx="56" cy="46" r="2.8" fill="${K}"/>
     <circle cx="40" cy="54" r="3.5" fill="#ff3b1f" opacity=".8"/><circle cx="60" cy="54" r="3.5" fill="#ff3b1f" opacity=".8"/>
     <rect x="68" y="56" width="16" height="26" rx="3" fill="${K}" stroke="${K}" stroke-width="2"/><rect x="71" y="60" width="10" height="16" fill="#fff6e5"/>
@@ -802,8 +805,8 @@ function onScreen(el, cb){
   const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
   // Good vibe 色系：綠＝草地森林植物、橘＝太陽溫暖、藍＝海洋天空、粉＝粉紅泡泡戀愛感
   const GRASS = '#8be36a', LEAF = '#5cd17a', FERN = '#3fbf8f';          // 綠
-  const SUN = '#ffc247', WARM = '#ff8f3f', GLOW = '#ffd98a';            // 橘
-  const OCEAN = '#2fa8e6', SKY = '#8fd6ff', SEA = '#3ccacb';            // 藍
+  const SUN = '#e2773f', WARM = '#b54a1b', GLOW = '#f2a870';            // 橘：Ambergallop 色系
+  const OCEAN = '#1f55b0', SKY = '#6f9ae6', SEA = '#05367a';            // 藍：Cobaltveil 色系
   const BUBBLE = '#ffa6cf', LOVE = '#ff7aae';                            // 粉
   const SCENES = [
     [GRASS, LEAF, FERN, SKY, GRASS],          // 森林
