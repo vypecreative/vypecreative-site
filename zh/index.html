@@ -451,7 +451,7 @@ img{display:block;max-width:100%}
     </div>
     <div class="rc-wrap">
       <div class="rc" id="rc"><div class="rc__tilt"><div class="rc__ring" id="ring"></div></div></div>
-      <div class="rc-hint mono dim"><span>← 拖曳 →</span><span id="rc-count"></span></div>
+      <div class="rc-hint mono dim"><span>← 拖曳 →</span></div>
     </div>
   </section>
 
@@ -771,7 +771,6 @@ function onScreen(el, cb){
       </div>
       <div class="rc__face rc__face--back" style="background-image:url('${p.photos[0].thumb}')"></div>
     </div>`).join('');
-  $('#rc-count').textContent = String(n).padStart(2,'0') + ' 個專案';
   size(); addEventListener('resize', size);
 
   const degPerSec = RM ? 0 : -7 * 6 * 0.35 * 0.25; // 反方向、0.5 倍速；想快就自己拖
