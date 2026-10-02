@@ -124,7 +124,12 @@ img{display:block;max-width:100%}
 .service:hover .crayon{transform:rotate(-6deg) scale(1.06)}
 
 /* round carousel */
-.rc-wrap{position:relative;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.rc-wrap{position:relative;border-top:1px solid var(--rule)}
+#index{padding-top:28px}
+.hero__meta{border-top:none!important;padding-top:0!important}
+#about{padding-top:clamp(40px,6vw,80px);padding-bottom:0}
+#about .section__head{border-top:none;padding-top:0}
+.butter{margin-top:-48px}
 .rc{height:clamp(460px,62vw,640px);perspective:3000px;overflow:hidden;display:flex;align-items:center;justify-content:center;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
 .rc.dragging{cursor:grabbing}
 @media (max-width:720px){.rc{height:380px}}
@@ -452,10 +457,6 @@ img{display:block;max-width:100%}
 
   <!-- INDEX -->
   <section class="section" id="index">
-    <div class="section__head fade">
-      <div><span class="mono dim">— 05 / Index</span><span class="label-num">精選合作案例</span></div>
-      
-    </div>
     <div class="filter-bar" id="filters"></div>
     <div class="grid" id="grid"></div>
   </section>
@@ -666,16 +667,17 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 /* ---------- project overlay (hash: #work/slug) ---------- */
 const ov = $('#proj'), body = $('#proj-body');
 let cur = -1, lastScroll = 0;
+const SMALL = innerWidth < 720;  // 手機用縮圖
 function render(i){
   const p = P[i], prev = P[(i-1+P.length)%P.length], next = P[(i+1)%P.length];
   const films = p.films || [], lead = films.find(f => !f.vertical), rest = films.filter(f => f !== lead);
   $('#proj-crumb').textContent = `${p.catLabel} / ${p.num}`;
   const gal = p.photos.slice(p.films && p.films.some(f => !f.vertical) ? 0 : 1).map((ph,k) => {
     const ar = ph.w / ph.h;
-    return `<figure data-ar="${ar.toFixed(4)}"><img src="${ph.src}" width="${ph.w}" height="${ph.h}" alt="${esc(ph.caption || p.title)}" loading="lazy">${ph.caption ? `<figcaption>${esc(ph.caption)}</figcaption>` : ''}</figure>`;
+    return `<figure data-ar="${ar.toFixed(4)}"><img src="${SMALL ? ph.thumb || ph.src : ph.src}" decoding="async" width="${ph.w}" height="${ph.h}" alt="${esc(ph.caption || p.title)}" loading="lazy">${ph.caption ? `<figcaption>${esc(ph.caption)}</figcaption>` : ''}</figure>`;
   }).join('');
   body.innerHTML = `
-    ${lead ? filmHTML(lead, 'proj__cover', '▶ ' + esc(lead.title)) : `<div class="proj__cover"><img src="${p.photos[0].src}" alt="${esc(p.title)}"></div>`}
+    ${lead ? filmHTML(lead, 'proj__cover', '▶ ' + esc(lead.title)) : `<div class="proj__cover"><img src="${SMALL ? p.photos[0].thumb || p.photos[0].src : p.photos[0].src}" alt="${esc(p.title)}"></div>`}
     <div class="proj__head">
       <div class="proj__num">${p.num}</div>
       <h2 class="proj__title">${esc(p.title)}</h2>
