@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0a0a0a; --fg:#f4f4f0; --fg-dim:#8a8a85; --rule:rgba(244,244,240,.18);
@@ -149,9 +149,31 @@ img{display:block;max-width:100%}
 .butter__sticky{position:sticky;top:0;height:100vh;overflow:hidden}
 .butter__stage{position:absolute;left:50%;top:40%;width:min(40vw,480px);aspect-ratio:1665/896;transform:translate(-50%,-50%)}
 @media (max-width:720px){.butter__stage{width:64vw}}
-.butter__trail{position:absolute;left:0;top:0;width:100%;pointer-events:none}
-.butter__trail.b1{filter:blur(2.5px)}
-.butter__trail.b2{filter:blur(7px)}
+/* 貼紙蓋章：彩色手繪貼紙依序貼上，最後 LOGO 蓋在黑貼紙上 */
+.stks{position:absolute;inset:-60% -13% -26% -13%;pointer-events:none}
+/* 名牌比原 LOGO 高：桌機縮小並往下放，避免蓋到導覽列與標語、也不壓到下方成效 */
+@media (min-width:721px){.butter__stage{width:min(27vw,350px);top:47%}}
+@media (max-width:720px){.butter .butter__stage{width:52vw;top:33%}}
+.stk{position:absolute;inset:0;background:var(--shape) center/100% 100% no-repeat;opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1.35);transition:opacity .12s var(--d),transform .5s cubic-bezier(.3,1.7,.5,1) var(--d);filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}
+.stuck .stk{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1)}
+/* 最上層：Hello my name is 名牌（手繪字、皺紙、手繪抖邊），LOGO 像用麥克筆寫在中間 */
+.nametag{--nt:var(--accent);display:grid;grid-template-rows:33% 1fr 12%;background:var(--fg);border-radius:6% / 9%;overflow:hidden;container-type:size;filter:url(#crayon-edge) drop-shadow(0 10px 14px rgba(0,0,0,.55))}
+.nametag::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27400%27%20height%3D%27300%27%3E%3Cfilter%20id%3D%27p%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.012%20.02%27%20numOctaves%3D%274%27%20seed%3D%279%27/%3E%3CfeDiffuseLighting%20lighting-color%3D%27%23fff%27%20surfaceScale%3D%273.2%27%3E%3CfeDistantLight%20azimuth%3D%27225%27%20elevation%3D%2752%27/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%2523p%29%27/%3E%3C/svg%3E") center/cover;mix-blend-mode:soft-light;opacity:.7;pointer-events:none}
+.nt-top{background:var(--nt);color:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Permanent Marker',cursive;line-height:1}
+.nt-top b{font-weight:400;font-size:17cqh;letter-spacing:.02em}
+.nt-top span{font-size:6.5cqh;margin-top:1.5cqh;letter-spacing:.04em}
+.nt-bot{background:var(--nt)}
+.butter__top{opacity:0;scale:1.4;rotate:-6deg;transition:opacity .12s .52s,scale .5s cubic-bezier(.3,1.7,.5,1) .52s,rotate .5s cubic-bezier(.3,1.7,.5,1) .52s}
+.stuck .butter__top{opacity:1;scale:.86;rotate:-3deg}   /* 與最上層名牌同斜度 */
+/* 黑色蠟筆圈 LOGO（捲動控制畫到哪） */
+.butter__loop{position:absolute;left:-9%;top:-4%;width:118%;height:116%;overflow:visible;pointer-events:none;filter:url(#crayon)}   /* 只圈名牌中間的 LOGO */
+.butter__loop path{fill:none;stroke:#0a0a0a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1}
+/* 成效數字依序畫上蠟筆底線 */
+.butter .proof__stats b{position:relative;display:inline-block}   /* 寬度貼齊數字，底線才不會拉滿整欄 */
+.proof__scrib{position:absolute;left:-6%;bottom:-.28em;width:112%;height:.32em;overflow:visible;pointer-events:none;filter:url(#crayon)}
+.proof__scrib path{fill:none;stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .7s cubic-bezier(.65,0,.35,1)}
+.butter__proof.in .proof__scrib path{stroke-dashoffset:0}
+@media (prefers-reduced-motion:reduce){.stk,.butter__top,.proof__scrib path{transition:none}}
 .butter__top{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;will-change:transform;filter:drop-shadow(0 1px 0 #0a0a0a)}
 .butter__cap{position:absolute;left:var(--page-pad);right:var(--page-pad);top:96px;display:flex;justify-content:space-between;gap:16px}
 .butter__proof{position:absolute;left:var(--page-pad);right:var(--page-pad);bottom:clamp(20px,5vh,56px);opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -446,6 +468,18 @@ html[lang="en"] .who__copy .who__more .who__svc{display:flex;flex-wrap:wrap;alig
 <body>
 <div class="grain"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="logo-boil-0" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="7" result="w"/>
+    <feDisplacementMap in="SourceGraphic" in2="w" scale="3.4"/>
+  </filter>
+  <filter id="logo-boil-1" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="19" result="w"/>
+    <feDisplacementMap in="SourceGraphic" in2="w" scale="3.4"/>
+  </filter>
+  <filter id="logo-boil-2" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="31" result="w"/>
+    <feDisplacementMap in="SourceGraphic" in2="w" scale="3.4"/>
+  </filter>
   <filter id="crayon-edge" x="-5%" y="-5%" width="110%" height="110%">
     <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="7" result="w"/>
     <feDisplacementMap in="SourceGraphic" in2="w" scale="3.2"/>
@@ -913,81 +947,31 @@ function onScreen(el, cb){
 (function(){ const v = document.querySelector('.footer__art video'); if (!v || RM) return;
   onScreen(v, on => on ? v.play().catch(()=>{}) : v.pause()); })();
 
-/* ================= BUTTER INTERSTITIAL (VYPE logo) — 參考 awwwards Footer Butter ================= */
-// 重點：拖影長度跟著捲動速度「拉長、再彈回」；近處清楚、遠處越來越糊；依深度連續上色並隨時間流動
+/* ================= BUTTER INTERSTITIAL (VYPE logo)：貼紙蓋章 ================= */
+// 捲到這段中間：橘、藍、粉、黑四張手繪邊貼紙依序貼上，最後白色 LOGO 蓋在黑貼紙上；往上捲離開會撕掉、再下來重貼。
+// 白色 LOGO 每約 120ms 換一組手描抖邊（手繪動畫的 boil）。下方成效數字依序畫上蠟筆底線。減少動態時直接顯示完成狀態。
 (function(){
   const sec = $('#butter'), stage = $('#butter-stage');
-  // 四個 good vibe 情境隨時間輪流交疊：森林 → 陽光 → 海洋 → 粉紅泡泡
-  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
-  // Good vibe 色系：綠＝草地森林植物、橘＝太陽溫暖、藍＝海洋天空、粉＝粉紅泡泡戀愛感
-  const GRASS = '#8be36a', LEAF = '#5cd17a', FERN = '#3fbf8f';          // 綠
-  const SUN = '#e2773f', WARM = '#b54a1b', GLOW = '#f2a870';            // 橘：Ambergallop 色系
-  const OCEAN = '#1f55b0', SKY = '#6f9ae6', SEA = '#05367a';            // 藍：Cobaltveil 色系
-  const BUBBLE = '#ffa6cf', LOVE = '#ff7aae';                            // 粉
-  const SCENES = [
-    [GRASS, LEAF, FERN, SKY, GRASS],          // 森林
-    [SUN, WARM, GLOW, GRASS, SUN],            // 陽光
-    [OCEAN, SKY, SEA, SUN, OCEAN],            // 海洋
-    [BUBBLE, SKY, LOVE, GLOW, BUBBLE],        // 粉紅泡泡
-  ].map(s => s.map(hex));
-  const colorAt = (stops, u) => { const L = [...stops, stops[0]], x = u * (L.length - 1), i = Math.min(L.length - 2, Math.floor(x)), k = x - i; return L[i].map((c, j) => Math.round(c + (L[i + 1][j] - c) * k)); };
-  const SCENE_SEC = 6;                      // 每個場景約 6 秒，交疊漸變
-  // 三層畫布：近（清楚）、中（微糊）、遠（很糊）→ 便宜地做出「越遠越糊」
-  stage.innerHTML = `<canvas class="butter__trail b2"></canvas><canvas class="butter__trail b1"></canvas><canvas class="butter__trail b0"></canvas><img class="butter__top" src="assets/vype-logo-white.png" alt="VYPE Creative">`;
-  const cvs = [...stage.querySelectorAll('canvas')].reverse();   // [near, mid, far]
-  const ctxs = cvs.map(c => c.getContext('2d'));
-  const logo = new Image(); logo.src = 'assets/vype-logo-white.png';
-  const NC = 20, N = 44, MAXL = 1.1;       // 每場景色票數、層數、最大拉長（倍 LOGO 高）
-  let W = 0, H = 0, sprites = [], ready = false, raf = 0, lastY = scrollY, vel = 0, len = 0;
-  function prepare(){
-    if (!logo.complete || !logo.naturalWidth) return;
-    W = stage.clientWidth; H = stage.clientHeight;
-    const dpr = 1, CH = H * (1 + MAXL);       // 拖影本來就糊，用 1x 省記憶體
-    cvs.forEach((c, k) => { c.width = Math.round(W * dpr); c.height = Math.round(CH * dpr); c.style.height = CH + 'px'; ctxs[k].setTransform(dpr, 0, 0, dpr, 0, 0); });
-    sprites = SCENES.map(stops => {
-      const arr = [];
-      for (let k = 0; k < NC; k++){
-        const s = document.createElement('canvas'); s.width = Math.round(W); s.height = Math.round(H);
-        const sc = s.getContext('2d'); sc.drawImage(logo, 0, 0, s.width, s.height);
-        sc.globalCompositeOperation = 'source-in'; const [r, g, b] = colorAt(stops, k / NC);
-        sc.fillStyle = `rgb(${r},${g},${b})`; sc.fillRect(0, 0, s.width, s.height);
-        arr.push(s);
-      }
-      return arr;
-    });
-    ready = true;
-  }
-  logo.onload = prepare; addEventListener('resize', prepare);
+  stage.innerHTML = `<div class="stks" aria-hidden="true"><div class="stk nametag" style="--nt:#e2773f;--x:-26px;--y:24px;--r:-9deg;--d:0s"><div class="nt-top"><b>Hello</b><span>my name is</span></div><div class="nt-mid"></div><div class="nt-bot"></div></div><div class="stk nametag" style="--nt:#6f9ae6;--x:24px;--y:16px;--r:7deg;--d:.12s"><div class="nt-top"><b>Hello</b><span>my name is</span></div><div class="nt-mid"></div><div class="nt-bot"></div></div><div class="stk nametag" style="--nt:#ffa6cf;--x:-14px;--y:-20px;--r:-5deg;--d:.24s"><div class="nt-top"><b>Hello</b><span>my name is</span></div><div class="nt-mid"></div><div class="nt-bot"></div></div><div class="stk nametag" style="--x:0px;--y:0px;--r:-3deg;--d:.36s"><div class="nt-top"><b>Hello</b><span>my name is</span></div><div class="nt-mid"></div><div class="nt-bot"></div></div></div><img class="butter__top" src="assets/vype-logo-white.png" alt="VYPE Creative"><svg class="butter__loop" viewBox="0 0 200 120" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M48,16 C90,4 160,6 186,30 C204,50 206,100 180,112 C132,124 50,120 20,100 C-2,84 2,40 30,22 C50,10 84,6 116,8"/></svg>`;
+  const top = stage.querySelector('.butter__top'), stks = stage.querySelector('.stks'), loop = stage.querySelector('.butter__loop'), loopP = loop.querySelector('path');
   const ease = x => 1 - Math.pow(1 - x, 3);
+  let raf = 0, stuck = false, lastB = -1;
   function frame(now){
     raf = requestAnimationFrame(frame);
-    if (!ready) return;
     const r = sec.getBoundingClientRect();
     const p = RM ? 1 : Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * 1.05)));
-    const e = ease(p), rise = (1 - e) * innerHeight * .3;
-    // 捲動速度 → 拖影拉長；停下來後彈回短短一截（像奶油被拉開）
-    const dy = Math.abs(scrollY - lastY); lastY = scrollY;
-    vel += (Math.min(dy, 120) - vel) * (dy > vel ? .2 : .06);   // 速度感慢慢退
-    const rest = H * .16, target = RM ? rest : rest + Math.min(H * (MAXL - .16), vel * H * .03);
-    len += (target - len) * (target > len ? .18 : .022);      // 拉長稍快、彈回很慢（約 2 秒）
-    const phase = RM ? 0 : now / 14000;
-    const st = RM ? 0 : now / 1000 / SCENE_SEC, sa = Math.floor(st) % SCENES.length, sb = (sa + 1) % SCENES.length;
-    const f = st - Math.floor(st), mix = f < .6 ? 0 : (f - .6) / .4;   // 每場景停留後，最後 40% 交疊到下一個
-    ctxs.forEach(c => c.clearRect(0, 0, W, H * (1 + MAXL)));
-    for (let i = N; i >= 1; i--){
-      const t = i / N, y = 2 + t * len;
-      const u = ((t * .8 - phase) % 1 + 1) % 1;
-      const c = t < .22 ? ctxs[0] : t < .55 ? ctxs[1] : ctxs[2];
-      const a = Math.min(1, e * 1.5) * (Math.pow(1 - t, 1.2) * .9 + .06), idx = Math.floor(u * NC) % NC;
-      if (mix < 1){ c.globalAlpha = a * (1 - mix); c.drawImage(sprites[sa][idx], 0, y, W, H); }
-      if (mix > 0){ c.globalAlpha = a * mix; c.drawImage(sprites[sb][idx], 0, y, W, H); }
-    }
-    ctxs.forEach(c => c.globalAlpha = 1);
-    cvs.forEach(c => c.style.transform = `translateY(${rise}px)`);
-    stage.querySelector('.butter__top').style.transform = `translateY(${rise}px)`;
+    const rise = (1 - ease(p)) * innerHeight * .3;
+    if (!stuck && p > .45){ stuck = true; stage.classList.add('stuck'); }            // 有緩衝，避免來回閃
+    else if (stuck && p < .15){ stuck = false; stage.classList.remove('stuck'); }
+    const b = RM ? 0 : Math.floor(now / 120) % 3;
+    if (b !== lastB){ top.style.filter = `url(#logo-boil-${b}) brightness(0)`; lastB = b; }
+    // 黑色蠟筆圈住 LOGO：跟著捲動一筆一筆畫，往回捲就擦掉（貼紙貼上後才開始畫）
+    loopP.style.strokeDashoffset = 1 - Math.min(1, Math.max(0, (p - .5) / .45));
+    const tf = `translateY(${rise}px)`; top.style.transform = tf; stks.style.transform = tf; loop.style.transform = tf + ' rotate(-3deg)';   // 與名牌同斜度
   }
   onScreen(sec, v => { if (v && !raf) raf = requestAnimationFrame(frame); if (!v){ cancelAnimationFrame(raf); raf = 0; } });
-  $('#proof-stats').innerHTML = D.proof.map(s => `<div><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join('');
+  const inks = ['#b6f23a', '#ffa6cf', '#6f9ae6', '#e2773f'];
+  $('#proof-stats').innerHTML = D.proof.map((s, i) => `<div><b>${esc(s.value)}<svg class="proof__scrib" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" stroke="${inks[i % 4]}" style="transition-delay:${.35 + i * .25}s" d="M2,6 C25,2 55,9 98,4"/></svg></b><span>${esc(s.label)}</span></div>`).join('');
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting && $('#butter-proof').classList.add('in')), {threshold:.6}).observe(sec.querySelector('.butter__sticky'));
 })();
 
